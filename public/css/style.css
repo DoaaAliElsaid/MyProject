@@ -1,0 +1,231 @@
+/* ===================== Font of the site ================ */
+
+@font-face{
+    src: url(../webfonts/Cairo-Regular.ttf);
+    font-family: cairo
+}
+body{
+    font-family: Cairo;
+}
+/* ============== Header ===================== */
+.navbar,.collpaseSearch{
+    background-color: black;
+}
+.navbar-light .navbar-toggler{
+    border-color: white;
+}
+.navbar .navbar-brand{
+    width: 108px;
+    height: 38px;
+}
+.navbar .navbar-nav .nav-item .nav-link{
+    color: rgb(247 246 246);
+    padding-left: 1rem;
+}
+.navbar .navbar-nav .nav-item .nav-link:hover{
+    border-bottom: 2px solid #f7841b;
+    transition-property: transform,opacity;
+    transform: scaleX(1);
+    transition-duration: .3s;
+}
+.navbar .navbar-nav .nav-item .nav-link:active,.navbar .navbar-nav .nav-item.active .nav-link{
+    border-bottom: 2px solid #f7841b;
+    color: #f7841b;
+}
+.navbar-light .navbar-nav .nav-link.active{
+    color: black;
+}
+/* ==================== */
+.search{
+    background: url(../images/background.jpg);
+    width: 100%;
+    background-size: cover;
+}
+.overlay{
+    background-color: rgba(0,0,0,.4);
+}
+.boxSearch{
+    background-color: rgba(0,0,0,.65);
+    padding: 14px;
+}
+.boxSearch .nav li a{
+    color: white;
+    padding: 14px;
+}
+.boxSearch .nav li .active{
+    color: #17bbc1;
+}
+.overlay .nav-pills .nav-item .nav-link{
+    background-color: #ced1d3;
+    margin-left: 1rem;
+    width: 7rem;
+    text-align: center;
+}
+.overlay .nav-pills .nav-item .nav-link.active{
+    background-color: black;
+}
+.formFilter .form-select,.formFilter .form-control{
+    font-size: 13px;
+    height: 2.5rem;
+}
+.advanced{
+    cursor: pointer;
+}
+.cardDetails .card-body{
+    padding-bottom: 0;
+}
+.heightDev{
+    height: 200px; /* Can be anything */
+    width: 100%; /* Can be anything */
+    position: relative;
+}
+.newHeightDev{
+    height: 480px; /* Can be anything */
+    width: 100%; /* Can be anything */
+    position: relative;
+}
+.heightDev img , .newHeightDev img{
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.linkCard p{
+    color: black;
+}
+.linkCard p .fa{
+    color: #0054a0;
+}
+.fa-phone{
+    transform: rotate(90deg);
+}
+.btnCard{
+    color: white;
+    background-color: #00407a;
+}
+.btnCard:hover{
+    color: white;
+    background-color: #07335c;
+}
+.textPrice{
+    color: #f7841b;
+    font-size: 21px;
+}
+.linkCard .badge{
+    margin-top: 0.3rem;
+}
+.famusAkar p{
+    text-align: center;
+}
+.famusAkar p a{
+    text-decoration: none;
+    color: #07335c;
+}
+.imgComapny{
+    width: 50px;
+    float: left;
+    height: 40px;
+}
+.footer h3{
+    color: white;
+}
+.footer p a , .footer p{
+    text-decoration: none;
+    color: rgb(91, 101, 110);
+}
+.footer p a:hover{
+    color: white;
+}
+.footer .social a .fab{
+    font-size: 26px;
+    margin-left: 1rem;
+}
+/* ======================== swiper style ====================== */
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    height: 250px;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.swiper-slide img{
+      max-width: 100%;
+}
+  /* ==================== Details ================================ */
+.images .newHeightDev ,.images .heightDev{
+      overflow: hidden;
+}
+.images .newHeightDev img:hover , .images .heightDev img:hover{
+    transform: scale(1.2,1.2);
+    transition: all .2s  ease-in-out;
+}
+.imgCardD{
+    width: 80px;
+    min-width: 80px;
+    border: 2px solid #f7841b;
+    height: 80px;
+    min-height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.imgSmall{
+    width: 40px;
+    height: 40px;
+}
+.bgCard{
+    background-color: #edeeef;
+}
+.newListGroup{
+    grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
+}
+.newListGroup .list-group-item{
+    background-color: #edeeef;
+    margin: 0.1rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+/* ================================= */
+.imgCompany{
+    width: 60px;
+    height: 60px;
+}
+.cardDetails{
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+}
+.cardDetails:hover{
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+/* =============================================== about us */
+.aboutUs {
+    min-height: 9rem;
+}
+/* ============================================= */
+@media screen and (max-width:500px) {
+    .formFilter .form-select,.formFilter .form-control ,.formFilter2 .form-select,.formFilter2 .form-control{
+        font-size: 11px;
+    }
+}
