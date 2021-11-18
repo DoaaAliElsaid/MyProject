@@ -1,29 +1,30 @@
- <!-- Akar Good -->
+<?php
+global $_type_s_en , $_purp_l_en ,  $_dir , $_masa3d , $_finish , $_b_age , $_type_s , $_purp_l , $_reg_in  ; ?>
+<!-- Akar Good -->
   <div class="cardAkarDetails border-bottom pb-4">
     <div class="container" dir="rtl">
-      <h4 class="text-center py-4">العقارات المميزة</h4>
       <div class="row">
-            <?php global $_type , $_purp_l , $_type_s , $_hay ,$_hay_en ,$_reg , $_reg_en,$_moh ;?>
+
           @if(!empty($units))
               @foreach($units as $row)
 
 
          <div class="col-lg-4 col-md-6">
           <div class="card mb-3">
-              <a href="#" class="heightDev">
-              <img src="https://www.tqsyet.com/uploads/{{$row->image1name}}" class="img-fluid mx-auto d-block" alt="card-image">
-            </a>
+              <a href="./realestate/{{$row->unit_id}}" class="heightDev">
+                  <img src="https://www.tqsyet.com/uploads/{{$row->image1name}}" class="img-fluid mx-auto d-block" alt="{{$row->title}}">
+              </a>
             <div class="card-body pb-0">
               <a href="./realestate/{{$row->unit_id}}" class="text-decoration-none linkCard">
-                  <p title={{$row->title}} class="card-text pt-2 fw-bold">
+                  <p title="{{$row->title}}" class="card-text fw-bold" style="height: 25px;">
                         {{$row->title}}
                   </p>
                 <span class="textPrice fw-bold">   جنيه {{$row->price}}</span>
                 <!--<span class="badge bg-secondary float-start">البلاتينية</span>-->
                 <!--<p class="card-text pt-2"> <i class="fa fa-map-marker"></i> {{$row->region_code , $row->ahyaacode , $row->mohafzacode}} </p>
                 <p><i class="fa fa-home"></i> {{$row->type}}-->
-                  <!--<img src="images/company.jpeg" class="imgComapny" alt="comapny">-->
-                </p>
+                  <!--<img src="images/company.jpeg" class="imgComapny" alt="comapny">
+                </p>-->
                 <p class="text-center">
                   <span> <i class="fa fa-bed"></i> {{$row->roomnum}}</span>
                   <span class="px-3"><i class="fa fa-toilet"></i> {{$row->bathnum}}</span>

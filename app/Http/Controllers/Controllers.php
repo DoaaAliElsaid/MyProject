@@ -7,12 +7,13 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class Controller extends BaseController
+class Controllers extends BaseController
 {
     function globals()
     {
+       // echo 'hi';
         $result = (new \App\Models)->globals();
-        print_r($result);exit();
+       // print_r($result['moh']);exit();
         global $_moh , $_moh_b , $_moh_in ,$_moh_en  ;
         global $_hay , $_hay_b , $_hay_in ,$_hay_en ;
         global $_reg , $_reg_b , $_reg_in ,$_reg_en ;
@@ -24,39 +25,51 @@ class Controller extends BaseController
 
         foreach ($result['moh'] as $rows)
         {
-            $_moh[$rows['code']] = $rows['name'];
-            $_moh_b[$rows['code']] = ' بـ'.$rows['name'];
-            $_moh_in[$rows['code']] = ' في '.$rows['name'];
-            $_moh_en[$rows['code']] = $rows['moh_en'];
+            $cod=$rows->code;
+            $_moh[$cod] = $rows->name;
+            $_moh_b[$cod] = ' بـ'.$rows->name;
+            $_moh_in[$cod] = ' في '.$rows->name;
+            $_moh_en[$cod] = $rows->moh_en;
+
         }
 
         foreach ($result['hay'] as $rows)
         {
-            $_hay[$rows['sec_code']] = $rows['name'];
-            $_hay_b[$rows['sec_code']] = ' بـ'.$rows['name'];
-            $_hay_in[$rows['sec_code']] = ' في '.$rows['name'];
-            $_hay_en[$rows['sec_code']] = $rows['hay_en'];
+            $sec_cod=$rows->sec_code;
+            $_hay[$sec_cod] = $rows->name;
+            $_hay_b[$sec_cod] = ' بـ'.$rows->name;
+            $_hay_in[$sec_cod] = ' في '.$rows->name;
+            $_hay_en[$sec_cod] = $rows->hay_en;
+
         }
+
         foreach ($result['reg'] as $rows)
         {
-            $_reg[$rows['region_code']] = $rows['region_name'];
-            $_reg_b[$rows['region_code']] = ' بـ'.$rows['region_name'];
-            $_reg_in[$rows['region_code']] = ' في '.$rows['region_name'];
-            $_reg_en[$rows['region_code']] = $rows['reg_en'];
+            $reg_cod=$rows->region_code;
+            $_reg[$reg_cod] = $rows->region_name;
+            $_reg_b[$reg_cod] = ' بـ'.$rows->region_name;
+            $_reg_in[$reg_cod] = ' في '.$rows->region_name;
+            $_reg_en[$reg_cod] = $rows->reg_en;
+            //print_r( $result['reg']);
         }
+        //exit();
         foreach ($result['type'] as $rows)
         {
-            $_type[$rows['id']] = $rows['type'] ;
-            $_type_s[$rows['id']] = $rows['types'] ;
-            $_type_s_en[$rows['id']] = $rows['type_en'] ;
+            $idd= $rows->id;
+            $_type[$idd] = $rows->type;
+            $_type_s[$idd] = $rows->types;
+            $_type_s_en[$idd] = $rows->type_en ;
+            //print_r( $_type_s[$idd]);
         }
+       // exit();
         $_type_en=$_type_s_en;
         foreach ($result['purp'] as $rows)
         {
-            $_purp[$rows['id']] = $rows['purp'] ;
-            $_purp_l[$rows['id']] = $rows['purp_l'] ;
-            $_purp_en[$rows['id']] = $rows['purp_en'] ;
-            $_purp_l_en[$rows['id']] = "for ".$rows['purp_en'] ;
+            $idd= $rows->id;
+            $_purp[$idd] = $rows->purp ;
+            $_purp_l[$idd] = $rows->purp_l ;
+            $_purp_en[$idd] = $rows->purp_en ;
+            $_purp_l_en[$idd] = "for ".$rows->purp_en;
         }
 
 

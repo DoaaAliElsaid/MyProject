@@ -23,6 +23,9 @@ Route::get('/blog', function () {
     return view('blog');
 });
 Route::get('/realestate/{id}' , 'realestate@index');
+//Route::get('/searches/(:any)', 'Searches@index');
+Route::any('/searches/{args?}', 'Searches@index')->where('args', '(.*)');
+
 Route::get('/about-us', function () {
     return view('about-us');
 });

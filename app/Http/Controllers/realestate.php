@@ -8,12 +8,15 @@ class realestate extends BaseController
 {
     function index($id)
     {
+        app('App\Http\Controllers\Controllers')->globals();
         //echo 'pla pla';exit();
         // Read value from Model method
         $real = (new \App\Realestate)->real($id);
-        //print_r($real);exit();
+        $units = (new \App\Realestate)->units($real[0]->type);
+        //print_r($units);exit();
         // Pass to view
-        return view('realestate')->with("real" , $real);
+        return view('realestate',array("real" => $real , "units"=>$units));
     }
+
 
 }
