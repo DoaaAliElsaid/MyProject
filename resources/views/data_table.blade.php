@@ -17,7 +17,7 @@ global $_purp_l_en, $_type_s_en, $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_r
                                   <div class="carousel-inner">
                                       <div class="carousel-item heightDev active">
                                           <a href="./realestate/{{$row->unit_id}}" class="heightDev">
-                                              <img src="https://www.tqsyet.com/uploads/{{$row->image1name}}" class="img-fluid mx-auto d-block" alt="{{$row->title}}">
+                                              <img src="https://www.shoqaq4sale.com/uploads/{{$row->image1name}}" class="img-fluid mx-auto d-block" alt="{{$row->title}}">
                                           </a>
                                       </div>
                                   </div>
@@ -68,28 +68,32 @@ global $_purp_l_en, $_type_s_en, $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_r
                           <div class="col-md-2">
                               <div class="p-2">
                                   <p class="text-center">
-                                      <span class="badge bg-secondary justify-content-center">اسكن</span>
+                                      <span class="badge bg-secondary justify-content-center">only4eve</span>
                                   </p>
                                   <img src="images/logo.png" class="imgCompany mx-auto d-block" alt="img">
-                                  <div class="row d-none d-md-block">
-                                      <div class="col-12 pb-2">
-                                          <button class="btn btnCard w-100"><i class="fa fa-phone"></i> إتصل</button>
+                                  @if((new \Jenssegers\Agent\Agent())->isDesktop())
+                                      <div class="row d-none d-md-block">
+                                          <div class="col-12 pb-2">
+                                              <button class="btn btnCard w-100" id="{{$row->unit_id}}" onclick="show_phone('{{$row->unit_id}}' , '{{$row->mobile}}')"><i class="fa fa-phone"></i> إتصل</button>
+                                          </div>
+    {{--                                      <div class="col-12">--}}
+    {{--                                          <button class="btn btnCard px-1 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-envelope"></i> البريد الإلكتروني</button>--}}
+    {{--                                      </div>--}}
                                       </div>
-{{--                                      <div class="col-12">--}}
-{{--                                          <button class="btn btnCard px-1 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-envelope"></i> البريد الإلكتروني</button>--}}
-{{--                                      </div>--}}
-                                  </div>
-                                  <div class="row d-sm-none">
-                                      <div class="col-4">
-                                          <button class="btn btn-success px-1 w-100"><i class="fab fa-whatsapp"></i></button>
+                                  @else
+                                      <div class="row d-sm-none">
+                                          <div class="col-4">
+                                              <a class="btn btn-success px-1 w-100" href="https://api.whatsapp.com/send?phone=2{{$row->video_img}}"><i class="fab fa-whatsapp"></i></a>
+{{--                                              <button class="btn btn-success px-1 w-100" href="https://api.whatsapp.com/send?phone=2{{$row->video_img}}"><i class="fab fa-whatsapp"></i></button>--}}
+                                          </div>
+                                          <div class="col-4 pb-2">
+                                              <button class="btn btnCard w-100" id="{{$row->unit_id}}" onClick="show_phone2('{{$row->unit_id}}', '{{$row->mobile}}');"><i class="fa fa-phone"></i></button>
+                                          </div>
+    {{--                                      <div class="col-4">--}}
+    {{--                                          <button class="btn btnCard px-1 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-envelope"></i></button>--}}
+    {{--                                      </div>--}}
                                       </div>
-                                      <div class="col-4 pb-2">
-                                          <button class="btn btnCard w-100"><i class="fa fa-phone"></i></button>
-                                      </div>
-{{--                                      <div class="col-4">--}}
-{{--                                          <button class="btn btnCard px-1 w-100" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-envelope"></i></button>--}}
-{{--                                      </div>--}}
-                                  </div>
+                                  @endif
                               </div>
                           </div>
 
@@ -98,7 +102,11 @@ global $_purp_l_en, $_type_s_en, $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_r
 
               @endforeach
           @endif
-
+          <div class="d-flex">
+              <div class="mx-auto">
+                  {{$units->links()}}
+              </div>
+          </div>
       </div>
     </div>
   </div>

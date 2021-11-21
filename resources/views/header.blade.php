@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="./css/all.css">
         <link rel="stylesheet" href="./css/swiper-bundle.min.css">
         <link rel="stylesheet" href="./css/style.css">
-
+        <script src="js/file.js"></script>
         <title>only4eve.com</title>
 </head>
 

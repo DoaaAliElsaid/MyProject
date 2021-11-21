@@ -4,7 +4,7 @@ $row = $real[0];
 //var_dump($row);
 //exit();
 $type=$row->type;
-$imgfolder= "https://www.tqsyet.com/uploads/";
+$imgfolder= "https://www.shoqaq4sale.com/uploads/";
 global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,$_hay,$_reg,$_moh, $_source,$_moh_en,$_hay_en,$_reg_en;
 
 ?>

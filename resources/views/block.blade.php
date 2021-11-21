@@ -1,5 +1,8 @@
 <?php
-global $_type_s_en , $_purp_l_en ,  $_dir , $_masa3d , $_finish , $_b_age , $_type_s , $_purp_l , $_reg_in  ; ?>
+global $_type_s_en , $_purp_l_en ,  $_dir , $_masa3d , $_finish , $_b_age  , $_reg_in  ;
+global   $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_reg_en,$_moh;
+
+?>
 <!-- Akar Good -->
   <div class="cardAkarDetails border-bottom pb-4">
     <div class="container" dir="rtl">
@@ -8,11 +11,28 @@ global $_type_s_en , $_purp_l_en ,  $_dir , $_masa3d , $_finish , $_b_age , $_ty
           @if(!empty($units))
               @foreach($units as $row)
 
+                  <?php
+                  $typ = $row->type;
 
+                  if(isset($row->region_code))
+                  {
+                      $r1= $row->region_code;
+                  }
+
+                  if(isset($row->ahyaacode))
+                  {
+                      $h1= $row->ahyaacode;
+                  }
+
+                  if(isset($row->mohafzacode))
+                  {
+                      $m1= $row->mohafzacode;
+                  }//echo $m1;exit();
+                  ?>
          <div class="col-lg-4 col-md-6">
           <div class="card mb-3">
               <a href="./realestate/{{$row->unit_id}}" class="heightDev">
-                  <img src="https://www.tqsyet.com/uploads/{{$row->image1name}}" class="img-fluid mx-auto d-block" alt="{{$row->title}}">
+                  <img src="https://www.shoqaq4sale.com/uploads/{{$row->image1name}}" class="img-fluid mx-auto d-block" alt="{{$row->title}}">
               </a>
             <div class="card-body pb-0">
               <a href="./realestate/{{$row->unit_id}}" class="text-decoration-none linkCard">
@@ -20,36 +40,38 @@ global $_type_s_en , $_purp_l_en ,  $_dir , $_masa3d , $_finish , $_b_age , $_ty
                         {{$row->title}}
                   </p>
                 <span class="textPrice fw-bold">   جنيه {{$row->price}}</span>
-                <!--<span class="badge bg-secondary float-start">البلاتينية</span>-->
-                <!--<p class="card-text pt-2"> <i class="fa fa-map-marker"></i> {{$row->region_code , $row->ahyaacode , $row->mohafzacode}} </p>
-                <p><i class="fa fa-home"></i> {{$row->type}}-->
-                  <!--<img src="images/company.jpeg" class="imgComapny" alt="comapny">
-                </p>-->
+                <span class="badge bg-secondary float-start">only4eve</span>
+                  <p class="card-text pt-2"> <i class="fa fa-map-marker"></i>  {{$_reg[$r1]}},{{$_hay[$h1]}},{{$_moh[$m1]}}  </p>
+                  <p><i class="fa fa-home"></i> {{$_type_s[$typ]}} </p>
+                  <img src="images/logo.png" class="imgComapny" alt="comapny">
                 <p class="text-center">
                   <span> <i class="fa fa-bed"></i> {{$row->roomnum}}</span>
                   <span class="px-3"><i class="fa fa-toilet"></i> {{$row->bathnum}}</span>
                   <span><i class="fa fa-chart-area"></i> {{$row->area}} متر<sup>2</sup></span>
                 </p>
               </a>
-              <div class="row d-none d-md-flex">
-                <div class="col-sm-6 pb-2">
-                  <button class="btn btnCard w-100" onclick="{{$row->mobile}}"><i class="fa fa-phone"></i> {{$row->mobile}}</button>
-                </div>
-                <div class="col-sm-6">
-                  <a class="btn btnCard px-1 w-100" href="./realestate/{{$row->unit_id}}" title="تفاصيل الاعلان"><i class="fas fa-info-circle"></i> تفاصيل الاعلان</a>
-                </div>
-              </div>
-              <div class="row d-sm-none">
-                <div class="col-4">
-                  <button class="btn btn-success px-1 w-100" ><i class="fab fa-whatsapp"></i></button>
-                </div>
-                <div class="col-4 pb-2">
-                  <button class="btn btnCard w-100"><i class="fa fa-phone"></i></button>
-                </div>
-                <div class="col-4">
-                    <a class="btn btnCard px-1 w-100" href="./realestate/{{$row->unit_id}}" title="تفاصيل الاعلان"><i class="fas fa-info-circle"></i> تفاصيل الاعلان</a>
-                </div>
-              </div>
+                @if((new \Jenssegers\Agent\Agent())->isDesktop())
+                     <div class="row d-none d-md-flex">
+                        <div class="col-sm-6 pb-2">
+                          <button class="btn btnCard w-100" id="{{$row->unit_id}}" onclick="show_phone('{{$row->unit_id}}' , '{{$row->mobile}}')"><i class="fa fa-phone"></i>اتصل</button>
+                        </div>
+                        <div class="col-sm-6">
+                          <a class="btn btnCard px-1 w-100" href="./realestate/{{$row->unit_id}}" title="تفاصيل الاعلان"><i class="fas fa-info-circle"></i> تفاصيل الاعلان</a>
+                        </div>
+                     </div>
+                @else
+                      <div class="row d-sm-none">
+                            <div class="col-4">
+                                <a class="btn btn-success px-1 w-100" href="https://api.whatsapp.com/send?phone=2{{$row->video_img}}"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                            <div class="col-4 pb-2">
+                                <button class="btn btnCard w-100" id="{{$row->unit_id}}" onClick="show_phone2('{{$row->unit_id}}', '{{$row->mobile}}');"><i class="fa fa-phone"></i></button>
+                            </div>
+                            <div class="col-4">
+                                 <a class="btn btnCard px-1 w-100" href="./realestate/{{$row->unit_id}}" title="تفاصيل الاعلان"><i class="fas fa-info-circle"></i> تفاصيل الاعلان</a>
+                            </div>
+                      </div>
+                @endif
               <p class="text-start pt-2">آخر تحديث {{$row->date}}</p>
             </div>
           </div>

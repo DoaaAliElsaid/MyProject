@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Traits\Units;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -51,18 +52,19 @@ class Searches extends Model
                     break;
             }
         }
-        $val =  DB::table('units')->where($keys,$where)->get();
+
+        $val =  DB::table('units')->where($keys,$where)->paginate(10);
+
         return $val;
 
-        //print_r($val);
-        //exit();
+        print_r($val);
+        exit();
     }
     function count($val){
         $count = count($val);
         return $count;
         //print_r($count);
         //exit();
-        //return  $count;
     }
 
 }

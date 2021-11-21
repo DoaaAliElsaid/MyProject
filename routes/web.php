@@ -34,3 +34,33 @@ Route::get('/policy', function () {
 });
 
 //Route::get('db','Index@blocks') ;
+Route::get('detect', function () {
+    $agent = new \Jenssegers\Agent\Agent;
+
+    $result = $agent->isMobile();
+
+    if ($result)
+        return "Yes, This is Mobile.";
+    else
+        return "No, This is not Mobile.";
+});
+Route::get('detect', function () {
+    $agent = new \Jenssegers\Agent\Agent;
+
+    $result = $agent->isDesktop();
+
+    if ($result)
+        return "Yes, This is Desktop.";
+    else
+        return "No, This is not Desktop.";
+});
+Route::get('detect', function () {
+    $agent = new \Jenssegers\Agent\Agent;
+
+    $result = $agent->isTablet();
+
+    if ($result)
+        return "Yes, This is Tablet.";
+    else
+        return "No, This is not Tablet.";
+});

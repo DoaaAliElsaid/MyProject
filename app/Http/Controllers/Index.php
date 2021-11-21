@@ -8,6 +8,7 @@ class Index extends BaseController
 {
     function blocks()
     {
+        app('App\Http\Controllers\Controllers')->globals();
         //echo 'pla pla';exit();
         // Read value from Model method
         $units = (new \App\Page)->units();
