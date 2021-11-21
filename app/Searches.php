@@ -57,8 +57,6 @@ class Searches extends Model
 
         return $val;
 
-        print_r($val);
-        exit();
     }
     function count($val){
         $count = count($val);
