@@ -71,8 +71,14 @@ class Searches extends BaseController
             }
         }
         if (isset($args[4])) {
-            $config['purp'] = $args[4];
+            $purps=$args[4];
+            $p = array_search($purps, $_purp_en);
+            if ($p != '') {
+                $config['purp'] = $p;
+            }
+            //$config['purp'] = $args[4];
         }
+       // echo 'purppppppp '.$config['purp'].'<br>';
         //print_r($config);exit();
         $units = (new \App\Searches)->units($config);
         $count = (new \App\Searches)->count($units);

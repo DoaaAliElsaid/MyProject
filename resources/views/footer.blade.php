@@ -14,6 +14,26 @@
             <p><a href="./policy/">سياسة الخصوصية</a></p>
             <p><a href="http://www.shof3qar.net/">شبكه مواقع شوف عقار</a></p>
         </div>
+
+          <div class="col-lg-4">
+              <h3 class="pb-3">عقارات </h3>
+              <p>
+                  <a href="./searches/Cairo/">
+                      عقارات القاهرة
+                  </a>
+              </p>
+              <p>
+                  <a href="./searches/Cairo/Al-Maadi/Apartments/sale/">
+                      شقق للبيع في المعادي
+                  </a>
+              </p>
+              <p>
+                  <a href="./searches/Cairo/Mohandeseen/Apartments/sale/">
+                      شقق للبيع في المهندسين
+                  </a>
+              </p>
+
+          </div>
       </div>
     </div>
   </footer>
