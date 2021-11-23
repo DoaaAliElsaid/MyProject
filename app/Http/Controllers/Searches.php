@@ -35,7 +35,6 @@ class Searches extends BaseController
                         $p = array_search($ahya, $_purp_en);
                         if ($p != '') {
                             $config['purp'] = $p;
-
                         }
                     }
                 }
@@ -76,9 +75,7 @@ class Searches extends BaseController
             if ($p != '') {
                 $config['purp'] = $p;
             }
-            //$config['purp'] = $args[4];
         }
-       // echo 'purppppppp '.$config['purp'].'<br>';
         //print_r($config);exit();
         $units = (new \App\Searches)->units($config);
         $count = (new \App\Searches)->count($units);

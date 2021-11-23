@@ -23,9 +23,7 @@ class Searches extends Model
                     if ($value>0)
                         $keys= 'mohafzacode' ;
                         $where = $value  ;
-
-                    $query = [$keys => $value] ;
-
+                        $query = [$keys => $value] ;
                     break;
 
                 case "hay":
@@ -33,52 +31,42 @@ class Searches extends Model
                         $keys = 'ahyaacode' ;
                         $where= $value  ;
                         $query[$keys] = $value ;
-
                     break;
 
                 case "reg":
                     if ($value>0)
                         $keys = 'region_code' ;
                         $where = $value  ;
-                    $query[$keys] = $value ;
-                      //  $where .= " , ". $keys. "=" . $value ;
-                       // $where .=" and region_code=".$value ;
+                        $query[$keys] = $value ;
                     break;
 
                 case "type":
                     if ($value>0)
                         $keys = 'type' ;
                         $where= $value  ;
-                    $query[$keys] = $value ;
-                        //$where .= " , ". $keys. "=" . $value ;
-                        //$where .=" and type=".$value ;
+                        $query[$keys] = $value ;
                     break;
 
                 case "purp":
                     if ($value>0)
                         $keys = 'purp' ;
                         $where= $value  ;
-                    $query[$keys] = $value ;
-                        //$where .= " , ". $keys. "=" . $value ;
-                        //$where .=" and purp=".$value ;
+                        $query[$keys] = $value ;
                     break;
                     //print_r($keys ,$where);
             }
-
-
         }
 //        print_r($query);
 //        exit();
 
         $val =  DB::table('units')->where(function($q) use ($query)
-    {
-        foreach($query as $key => $value)
-        {
+                {
+                    foreach($query as $key => $value)
+                    {
 
-            $q->where($key, '=', $value);
-        }
-    })->paginate(10);
-
+                        $q->where($key, '=', $value);
+                    }
+                })->paginate(10);
 //        print_r($val);
 //        exit();
         if(isset($_GET['q_searches'])){
@@ -87,7 +75,6 @@ class Searches extends Model
             dd($query);
         }
         return $val;
-
     }
     function count($val){
         $count = count($val);
