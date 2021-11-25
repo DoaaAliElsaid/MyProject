@@ -17,6 +17,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+app('App\Http\Controllers\Controllers')->globals();
 
 Route::get('/', 'index@blocks')->name('/');
 
@@ -32,6 +33,12 @@ Route::get('/about-us', function () {
 });
 
 Route::get('/companies/{args?}', 'Companies@index')->where('args', '(.*)');
+
+Route::get('for-{purp}', 'All_types@purp');
+Route::get('{type?}-for-{purp}', 'All_types@index');
+Route::get('furnished-{type}-for-{purp}', 'All_types@index');
+Route::get('{type}-units', 'All_types@special');
+Route::get('{type}-rent', 'All_types@rent');
 
 Route::get('detect', function () {
     $agent = new \Jenssegers\Agent\Agent;

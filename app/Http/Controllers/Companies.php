@@ -8,7 +8,6 @@ class Companies extends BaseController
 {
     function index($company)
     {
-        app('App\Http\Controllers\Controllers')->globals();
         $company = explode('/', $company);
         $units = (new \App\Companies)->company($company[0]);
 

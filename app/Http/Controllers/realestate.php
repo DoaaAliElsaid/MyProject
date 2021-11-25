@@ -8,7 +8,6 @@ class realestate extends BaseController
 {
     function index($id)
     {
-        app('App\Http\Controllers\Controllers')->globals();
         //echo 'pla pla';exit();
         // Read value from Model method
         $real = (new \App\Realestate)->real($id);

@@ -18,8 +18,8 @@
           <div class="col-lg-4">
               <h3 class="pb-3">عقارات </h3>
               <p>
-                  <a href="./searches/Cairo/">
-                      عقارات القاهرة
+                  <a href="./apartments-for-sale/">
+                      شقق للبيع
                   </a>
               </p>
               <p>

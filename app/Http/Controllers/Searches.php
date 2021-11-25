@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Request;
 class Searches extends BaseController
 {
     function index($args){
-        app('App\Http\Controllers\Controllers')->globals();
         // echo Request::segment(2) ;
         global $_moh_en,$_hay_en,$_reg_en ,$_type_s_en,$_purp_en;
         $args = explode('/', $args);

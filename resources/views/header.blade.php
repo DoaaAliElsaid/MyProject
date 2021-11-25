@@ -27,7 +27,6 @@
         <link rel="stylesheet" href="./css/all.css">
         <link rel="stylesheet" href="./css/swiper-bundle.min.css">
         <link rel="stylesheet" href="./css/style.css">
-        <script src="js/file.js"></script>
         <title>only4eve.com</title>
 </head>
 
@@ -50,7 +49,7 @@
         </ul>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 pe-3">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="https://www.shof3qar.com/companies/"><i class="fa fa-briefcase"></i> للشركات </a>
+            <a class="nav-link" aria-current="page" href="./companies/3kari"><i class="fa fa-briefcase"></i> للشركات </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://www.shof3qar.com/expressadd/?cache=false"><i class="fa fa-plus-circle ps-1"></i> إضافة عقار</a>
