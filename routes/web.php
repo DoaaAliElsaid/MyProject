@@ -34,6 +34,9 @@ Route::get('/about-us', function () {
 
 Route::get('/companies/{args?}', 'Companies@index')->where('args', '(.*)');
 
+Route::get('/allsale/{args?}', 'new_purp@index')->where('args', '(.*)');
+Route::get('/allrent/{args?}', 'new_purp@index')->where('args', '(.*)');
+
 Route::get('for-{purp}', 'All_types@purp');
 Route::get('{type?}-for-{purp}', 'All_types@index');
 Route::get('furnished-{type}-for-{purp}', 'All_types@index');

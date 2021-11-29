@@ -74,4 +74,65 @@ class Controllers extends BaseController
 
 
     }
+    function get_code_location($location) {
+        $ci=& get_instance();
+        $ci->load->database();
+        /*  $sql  = "SELECT region_code FROM `regions` where region_name like '%$first%' and ahyaa_name like '%$second%' and mohafazat_name like '%$third%'";
+
+         echo 'query = '.$sql.'<br>';
+      $query = $ci->db->query($sql);
+         $row = $query->row();*/
+
+
+        //$result = mysql_query($query);
+
+        //$rows = mysql_fetch_assoc($result);
+        // echo'kjkjk<pre>';print_r($row);echo'</pre>';exit();
+
+         echo 'fhfh '. 'function helper';exit();
+        $location = str_replace(' - ', '-', $location);
+        $location = str_replace(' -', '-', $location);
+        $location = str_replace('- ', '-', $location);
+        if(preg_match('/[-]/', $location)){
+            // echo 'found <br>';
+            $arr = explode("-", $location, 3);
+            $first = $arr[0];
+            // echo 'first word = '.$first.'<br>';
+            $second = $arr[1];
+            // echo 'second word = '.$second.'<br>';
+            $third = $arr[2];
+            //  echo 'third word = '.$third.'<br>';
+            if($third == ''){
+                $sql = "SELECT sec_code FROM ahyaa where name like '%$first%' and gov_name like '%$second%'";
+                // echo $sql.'<br>';
+                $query = $ci->db->query($sql);
+                $row = $query->row();
+                $code = $row->sec_code;
+            }else{
+                $sql = "SELECT region_code FROM `regions` where region_name like '%$first%' and ahyaa_name like '%$second%' and mohafazat_name like '%$third%'";
+                //echo $sql.'<br>';
+                $query = $ci->db->query($sql);
+                $row = $query->row();
+                $code = $row->region_code;
+            }
+
+        }else{
+            //echo 'Not found <br>';
+            $sql = "SELECT code FROM mohafazat where name like '%$location%'";
+            //echo $sql.'<br>';
+            $query = $ci->db->query($sql);
+            $row = $query->row();
+            $code = $row->code;
+            if(!$code){
+                echo 'NOT CODE';
+                $sql = "SELECT sec_code FROM ahyaa where name like '%$location%'";
+                //echo $sql.'<br>';
+                $query = $ci->db->query($sql);
+                $row = $query->row();
+                $code = $row->sec_code;
+            }
+        }
+        //echo '<br> code ='.$code;exit();
+        return $code;
+    }
 }
