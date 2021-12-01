@@ -9,6 +9,7 @@
       </div>
     </div>
   </div>
+
 @include('autosearch')
 @include('block')
 @include('footer')

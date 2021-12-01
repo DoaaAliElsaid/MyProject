@@ -12,8 +12,7 @@ $URL = "";
     <div class="overlay pt-3">
         <div class="container">
             <div class="text-white pt-4">
-                <h1 class="text-center">ابحث هنا</h1>
-                <!--<h3 class="text-center pb-4">عقارات في مصر</h3>-->
+{{--                <h3 class="text-center pb-4">عقارات في مصر</h3>--}}
                 <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button onClick="return btnClick(this);" class="nav-link" id="allsale" data-bs-toggle="pill"
@@ -36,7 +35,7 @@ $URL = "";
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                     <!--reeeeeeeeeeeeeeent-->
-                                    <form autocomplete="off" method="POST">
+                                    <form autocomplete="off">
                                         <div class="input-group mb-3 autocomplete">
                                             <span class="input-group-text p-0">
                                                 <button class="btn btn-primary px-4" style="color: #ff0000" name="sbmit" type="submit" title="بحث" id="button-addon1">بحث</button>
@@ -44,24 +43,26 @@ $URL = "";
                                             <input required class="form-control text-end" name="location"  id="myInput" type="text"  placeholder=" اكتب اسم المدينة او الحى او المنطقة " >
                                             <span class="input-group-text">
                                                 <i class="fa fa-search"></i>
-                                            </span>
+                                             </span>
                                         </div>
                                     </form>
+
                                 </div>
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                     <!--saaaaaaaale-->
-                                    <form autocomplete="off" method="POST">
+                                    <form autocomplete="off">
                                         <div class="input-group mb-3 autocomplete">
-                            <span class="input-group-text p-0">
-                                <button class="btn btn-primary px-4" name="sbmit" type="submit" title="بحث" id="button-addon1">بحث</button>
-                            </span>
-                                            <input required class="form-control text-end" name="location"  id="myInput1" type="text"  placeholder=" اكتب اسم المدينة او الحى او المنطقة " >
+                                            <span class="input-group-text p-0">
+                                                <button class="btn btn-primary px-4" name="sbmit" type="submit" title="بحث" id="button-addon1">بحث</button>
+                                            </span>
+                                            <input required class="form-control text-end" name="location" id="myInput1" type="text"  placeholder=" اكتب اسم المدينة او الحى او المنطقة " >
                                             <span class="input-group-text">
-                                <i class="fa fa-search"></i>
-                            </span>
-                                            <input type="hidden" id="btnClickedValue" name="btnClickedValue" value="" />
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                            <input type="hidden" id="btnClickedValue" name="btnClickedValue" value="allsale" />
                                         </div>
                                     </form>
+
                                 </div>
                             </div>
 
@@ -74,40 +75,36 @@ $URL = "";
         </div>
     </div>
 </div>
-
+<br>
 <?php
+
 global $_type_en,$_purp_en,$_moh_en,$_hay_en,$_reg_en;
-$URL = "";
+//$URL = {{URL::to('/')}}/;
 $location = "";
-$urlLocal = "http://localhost";
+//$URL = "http://127.0.0.1:8000/";
 $urlOnline= "https://tqsyet.com";
 
-$purp = isset($_POST['btnClickedValue']) ? $_POST['btnClickedValue']: '';
-if(isset($_POST['btnClickedValue'])){
-    $URL .= '/'.$purp;
-}
-else{
-    $URL .= '/allrent';
-}
-if(!isset($_POST['type'])){
-    $URL .= '/Allrealestate';
+if(isset($_GET['btnClickedValue'])){
+    $purp = $_GET['btnClickedValue'];
+    $URL .= $purp;
 }else{
-    $type_name = $_POST['type'];
-    $URL .= '/'.$type_name;
+    $URL .= 'allrent';
 }
+//$URL .= '/Allrealestate';
 //echo 'url = '.$URL.'<br>';
+//exit();
 //echo 'post location = '.$_POST['location'].'<br>';
 
-if(!isset($_POST['location'])){
+if(! isset($_GET['location'])){
 }else{
-    $location = $_POST['location'];
+    $location = $_GET['location'];
     $term = $location ;
     $count = substr_count($location, '-');
     $location = str_replace(' - ', '-', $location);
     //$location_code = $GLOBALS['global_location'];
-    $location_code = get_code_location($location);
+    $location_code = app('App\Http\Controllers\Controllers')->get_code_location($location);
     echo 'location code= '.$location_code.'<br>';
-
+    //exit();
     if(strlen($location_code)>4){
         $moh = substr($location_code, 0, 2);
         $URL .= '/'.$_moh_en[$moh];
@@ -124,19 +121,20 @@ if(!isset($_POST['location'])){
         $URL .= '/'.$_moh_en[$location_code];
     }
 }
+$URL.="/";
 //echo 'url = '.$URL.'<br>';//exit();
 $URL = str_replace('//', '/', $URL);
-if (isset($_POST['sbmit']) && $_POST['location']){
+if (isset($_GET['sbmit']) && $_GET['location']){
     if($location_code ){
-        header("Location: ".$urlOnline.$URL."/");
+        echo 'yeeeeeees99999' . $URL;
+        header("Location: ".$URL);
+        die();
+
     }else{
-        header("Location: ".$urlOnline."/search/term/".$term);
+        header("Location: "."/search/term/".$term);
     }
 }
-//elseif (isset($_POST['sbmit']) && !$_POST['location']) {
-//    header("Location: ".$urlLocal.$URL."/");
-//}
-//echo 'url = '.$URL;//exit();
+
 ?>
 
 <script>

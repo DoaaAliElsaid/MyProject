@@ -11,19 +11,13 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('index');
-});*/
 
-
+// call public or global controller //
 use Illuminate\Support\Facades\Route;
 app('App\Http\Controllers\Controllers')->globals();
 
 Route::get('/', 'index@blocks')->name('/');
 
-Route::get('/blog', function () {
-    return view('blog');
-});
 Route::get('/realestate/{id}' , 'realestate@index');
 
 Route::any('/searches/{args?}', 'Searches@index')->where('args', '(.*)');
@@ -34,15 +28,20 @@ Route::get('/about-us', function () {
 
 Route::get('/companies/{args?}', 'Companies@index')->where('args', '(.*)');
 
+//-------------------- new purp routes ---------------//
 Route::get('/allsale/{args?}', 'new_purp@index')->where('args', '(.*)');
 Route::get('/allrent/{args?}', 'new_purp@index')->where('args', '(.*)');
+//-----------------------end of new purp --------------//
 
+//-------------------- alltypes routes ---------------//
 Route::get('for-{purp}', 'All_types@purp');
 Route::get('{type?}-for-{purp}', 'All_types@index');
 Route::get('furnished-{type}-for-{purp}', 'All_types@index');
 Route::get('{type}-units', 'All_types@special');
 Route::get('{type}-rent', 'All_types@rent');
+//-----------------------end of alltypes --------------//
 
+//-------------------- detect mobile routes ---------------//
 Route::get('detect', function () {
     $agent = new \Jenssegers\Agent\Agent;
     $result = $agent->isMobile();
@@ -51,7 +50,9 @@ Route::get('detect', function () {
     else
         return "No, This is not Mobile.";
 });
+//-----------------------end of mobile routes--------------//
 
+//-------------------- detect desktop routes ---------------//
 Route::get('detect', function () {
     $agent = new \Jenssegers\Agent\Agent;
     $result = $agent->isDesktop();
@@ -60,7 +61,9 @@ Route::get('detect', function () {
     else
         return "No, This is not Desktop.";
 });
+//-------------------- end of desktop routes ---------------//
 
+//-------------------- detect tablet routes ---------------//
 Route::get('detect', function () {
     $agent = new \Jenssegers\Agent\Agent;
     $result = $agent->isTablet();
@@ -69,3 +72,5 @@ Route::get('detect', function () {
     else
         return "No, This is not Tablet.";
 });
+//-------------------- end of tablet routes ---------------//
+

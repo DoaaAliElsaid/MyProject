@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\DB;
 
 class Controllers extends BaseController
 {
@@ -75,21 +76,9 @@ class Controllers extends BaseController
 
     }
     function get_code_location($location) {
-        $ci=& get_instance();
-        $ci->load->database();
-        /*  $sql  = "SELECT region_code FROM `regions` where region_name like '%$first%' and ahyaa_name like '%$second%' and mohafazat_name like '%$third%'";
-
-         echo 'query = '.$sql.'<br>';
-      $query = $ci->db->query($sql);
-         $row = $query->row();*/
-
-
-        //$result = mysql_query($query);
-
-        //$rows = mysql_fetch_assoc($result);
-        // echo'kjkjk<pre>';print_r($row);echo'</pre>';exit();
-
-         echo 'fhfh '. 'function helper';exit();
+         echo 'fhfh '. 'function helper'.$location;
+        //$arr=explode("-",$location);
+        //exit();
         $location = str_replace(' - ', '-', $location);
         $location = str_replace(' -', '-', $location);
         $location = str_replace('- ', '-', $location);
@@ -97,42 +86,30 @@ class Controllers extends BaseController
             // echo 'found <br>';
             $arr = explode("-", $location, 3);
             $first = $arr[0];
-            // echo 'first word = '.$first.'<br>';
+             echo 'first word = '.$first.'<br>';
             $second = $arr[1];
-            // echo 'second word = '.$second.'<br>';
-            $third = $arr[2];
-            //  echo 'third word = '.$third.'<br>';
-            if($third == ''){
-                $sql = "SELECT sec_code FROM ahyaa where name like '%$first%' and gov_name like '%$second%'";
-                // echo $sql.'<br>';
-                $query = $ci->db->query($sql);
-                $row = $query->row();
-                $code = $row->sec_code;
+             echo 'second word = '.$second.'<br>';
+             if(isset($arr[2])){
+                $third = $arr[2];
+                //echo 'third word = '.$third.'<br>';
+                 $coder = DB::table('regions')->select('region_code')->where('region_name', 'like', '%' .$first . '%')->where('ahyaa_name','like', '%' . $second. '%')->where('mohafazat_name','like', '%' . $third. '%')->get();
+                 $code=$coder[0]->region_code;
             }else{
-                $sql = "SELECT region_code FROM `regions` where region_name like '%$first%' and ahyaa_name like '%$second%' and mohafazat_name like '%$third%'";
-                //echo $sql.'<br>';
-                $query = $ci->db->query($sql);
-                $row = $query->row();
-                $code = $row->region_code;
+                 $codea = DB::table('ahyaa')->select('sec_code')->where('name','like', '%' .$first. '%')->where('gov_name','like', '%' .$second. '%')->get();
+                 $code=$codea[0]->sec_code;
             }
 
         }else{
-            //echo 'Not found <br>';
-            $sql = "SELECT code FROM mohafazat where name like '%$location%'";
-            //echo $sql.'<br>';
-            $query = $ci->db->query($sql);
-            $row = $query->row();
-            $code = $row->code;
-            if(!$code){
+            $codem = DB::table('mohafazat')->select('code')->where('name','like', '%' .$location. '%')->get();
+            $code=$codem[0]->code;
+            if(!$codem){
                 echo 'NOT CODE';
-                $sql = "SELECT sec_code FROM ahyaa where name like '%$location%'";
-                //echo $sql.'<br>';
-                $query = $ci->db->query($sql);
-                $row = $query->row();
-                $code = $row->sec_code;
+                $codea = DB::table('ahyaa')->select('sec_code')->where('name','like', '%' .$location. '%')->get();
+                $code=$codea[0]->sec_code;
             }
         }
-        //echo '<br> code ='.$code;exit();
+
+        //echo $code;exit();
         return $code;
     }
 }

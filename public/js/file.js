@@ -47,3 +47,8 @@ function show_phone2(id2,mob2) {
     //alert ('id2 = '+id2+'mob2 = '+mob2);
     document.getElementById(id2).innerHTML = "<a href='tel:"+mob2+"' style='color: white;'>"+mob2+"</a>";
 }
+
+
+
+
+

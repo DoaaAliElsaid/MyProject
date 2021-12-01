@@ -37,7 +37,7 @@ body{
 }
 /* ==================== */
 .search{
-    background: url(../images/background.jpg);
+    /*background: url(../images/background.jpg);*/
     width: 100%;
     background-size: cover;
 }

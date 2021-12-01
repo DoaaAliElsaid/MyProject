@@ -55,15 +55,18 @@ global $_purp_l_en, $_type_s_en, $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_r
                                       <p title="{{$row->title}}" class="card-text fw-bold" style="height: 25px;">
                                           {{$row->title}}
                                       </p>
+                                      <p title="{{$row->details}}" class="card-text" style="height: 25px;">
+                                          {{substr($row->details, 0, 150)}}...
+                                      </p>
                                       <span class="text-danger fw-bold">   جنيه {{$row->price}}</span>
-                                      <p class="card-text pt-2"> <i class="fa fa-map-marker"></i>  {{$_reg[$r1]}},{{$_hay[$h1]}},{{$_moh[$m1]}}  </p>
-                                      <p><i class="fa fa-home"></i> {{$_type_s[$typ]}} </p>
+                                      <p class="card-text pt-2"> <i class="fa fa-map-marker"></i>  {{$_type_s[$typ]}} {{$_reg[$r1]}},{{$_hay[$h1]}},{{$_moh[$m1]}}  </p>
+{{--                                      <p><i class="fa fa-home"></i> {{$_type_s[$typ]}} </p>--}}
                                       <p class="text-center">
                                           <span> <i class="fa fa-bed"></i> {{$row->roomnum}}</span>
                                           <span class="px-3"><i class="fa fa-toilet"></i>{{$row->bathnum}}</span>
                                           <span><i class="fa fa-chart-area"></i>{{$row->area}} متر<sup>2</sup></span>
                                       </p>
-                                      <p class="text-muted"> آخر تحديث {{$row->date}} </p>
+{{--                                      <p class="text-muted"> آخر تحديث {{$row->date}} </p>--}}
                                   </a>
                               </div>
                           </div>
