@@ -79,10 +79,10 @@ $URL = "";
 <?php
 
 global $_type_en,$_purp_en,$_moh_en,$_hay_en,$_reg_en;
-//$URL = {{URL::to('/')}}/;
+
 $location = "";
 //$URL = "http://127.0.0.1:8000/";
-$urlOnline= "https://tqsyet.com";
+//$urlOnline= "https://tqsyet.com";
 
 if(isset($_GET['btnClickedValue'])){
     $purp = $_GET['btnClickedValue'];
@@ -90,35 +90,32 @@ if(isset($_GET['btnClickedValue'])){
 }else{
     $URL .= 'allrent';
 }
-//$URL .= '/Allrealestate';
-//echo 'url = '.$URL.'<br>';
-//exit();
-//echo 'post location = '.$_POST['location'].'<br>';
-
-if(! isset($_GET['location'])){
-}else{
+$URL .= '/Allrealestate';
+if(isset($_GET['location'])){
     $location = $_GET['location'];
     $term = $location ;
     $count = substr_count($location, '-');
     $location = str_replace(' - ', '-', $location);
     //$location_code = $GLOBALS['global_location'];
     $location_code = app('App\Http\Controllers\Controllers')->get_code_location($location);
-    echo 'location code= '.$location_code.'<br>';
+   //echo 'location code= '.$location_code.'<br>';
     //exit();
-    if(strlen($location_code)>4){
-        $moh = substr($location_code, 0, 2);
-        $URL .= '/'.$_moh_en[$moh];
-        $hay = substr($location_code, 0, 4);
-        $URL .= '/'.$_hay_en[$hay];
-        $URL .= '/'.$_reg_en[$location_code];
-    }
-    elseif(strlen($location_code)>2 && strlen($location_code)<= 4){
-        $moh = substr($location_code, 0, 2);
-        $URL .= '/'.$_moh_en[$moh];
-        $URL .= '/'.$_hay_en[$location_code];
-    }
-    else{
-        $URL .= '/'.$_moh_en[$location_code];
+    if($location_code !=null){
+        if(strlen($location_code)>4){
+            $moh = substr($location_code, 0, 2);
+            $URL .= '/'.$_moh_en[$moh];
+            $hay = substr($location_code, 0, 4);
+            $URL .= '/'.$_hay_en[$hay];
+            $URL .= '/'.$_reg_en[$location_code];
+        }
+        elseif(strlen($location_code)>2 && strlen($location_code)<= 4){
+            $moh = substr($location_code, 0, 2);
+            $URL .= '/'.$_moh_en[$moh];
+            $URL .= '/'.$_hay_en[$location_code];
+        }
+        else{
+            $URL .= '/'.$_moh_en[$location_code];
+        }
     }
 }
 $URL.="/";
@@ -126,15 +123,14 @@ $URL.="/";
 $URL = str_replace('//', '/', $URL);
 if (isset($_GET['sbmit']) && $_GET['location']){
     if($location_code ){
-        echo 'yeeeeeees99999' . $URL;
+        //echo 'yeeeeeees99999' . $URL;
         header("Location: ".$URL);
         die();
-
     }else{
         header("Location: "."/search/term/".$term);
+        die();
     }
 }
-
 ?>
 
 <script>

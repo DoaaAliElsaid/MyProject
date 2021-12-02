@@ -18,6 +18,8 @@ app('App\Http\Controllers\Controllers')->globals();
 
 Route::get('/', 'index@blocks')->name('/');
 
+Route::get('/search/term/{term}' , 'search@term');
+
 Route::get('/realestate/{id}' , 'realestate@index');
 
 Route::any('/searches/{args?}', 'Searches@index')->where('args', '(.*)');

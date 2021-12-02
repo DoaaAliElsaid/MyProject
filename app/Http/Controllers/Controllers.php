@@ -76,19 +76,22 @@ class Controllers extends BaseController
 
     }
     function get_code_location($location) {
-         echo 'fhfh '. 'function helper'.$location;
-        //$arr=explode("-",$location);
-        //exit();
+       //  echo 'fhfh '.$location; exit();
         $location = str_replace(' - ', '-', $location);
         $location = str_replace(' -', '-', $location);
         $location = str_replace('- ', '-', $location);
-        if(preg_match('/[-]/', $location)){
+        if(preg_match('/[-]/', $location)) {
             // echo 'found <br>';
             $arr = explode("-", $location, 3);
-            $first = $arr[0];
-             echo 'first word = '.$first.'<br>';
-            $second = $arr[1];
-             echo 'second word = '.$second.'<br>';
+            //die($arr);
+            if (isset($arr[0])) {
+                $first = $arr[0];
+                //echo 'first word = ' . $first . '<br>';
+             }
+            if (isset($arr[1])) {
+                $second = $arr[1];
+                //echo 'second word = ' . $second . '<br>';
+            }
              if(isset($arr[2])){
                 $third = $arr[2];
                 //echo 'third word = '.$third.'<br>';
@@ -101,15 +104,12 @@ class Controllers extends BaseController
 
         }else{
             $codem = DB::table('mohafazat')->select('code')->where('name','like', '%' .$location. '%')->get();
-            $code=$codem[0]->code;
-            if(!$codem){
+            $code=isset($codem[0])?$codem[0]->code:null;
+            if(!$code){
                 echo 'NOT CODE';
-                $codea = DB::table('ahyaa')->select('sec_code')->where('name','like', '%' .$location. '%')->get();
-                $code=$codea[0]->sec_code;
             }
         }
-
-        //echo $code;exit();
+       // echo $code;exit();
         return $code;
     }
 }
