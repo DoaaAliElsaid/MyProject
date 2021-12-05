@@ -3,11 +3,8 @@
   <div class="resultSearch py-4">
     <div class="container" dir="rtl">
       <div class="row">
-        <div class="col-md-7">
-          <h5 class="text-end pb-2"> عقارات للبيع في مصر</h5>
-        </div>
+        <h5 class="text-center pb-4">البحث غير موجود</h5>
       </div>
-        @include('data_table')
     </div>
   </div>
 

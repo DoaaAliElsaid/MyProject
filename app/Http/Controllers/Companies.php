@@ -12,6 +12,7 @@ class Companies extends BaseController
         $units = (new \App\Companies)->company($company[0]);
 
         $sponser = (new \App\Companies)->sponser($company[0]);
+
         //print_r($sponser);
         //exit();
         return view('companies',array("sponser" => $sponser , "units"=>$units));

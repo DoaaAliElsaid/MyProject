@@ -76,11 +76,5 @@ class Searches extends Model
         }
         return $val;
     }
-    function count($val){
-        $count = count($val);
-        return $count;
-        //print_r($count);
-        //exit();
-    }
 
 }

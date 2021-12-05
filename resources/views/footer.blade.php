@@ -4,9 +4,9 @@
       <div class="row border-bottom">
         <div class="col-lg-4">
           <h3 class="pb-3">اتصل بنا</h3>
-
             <p><a href="mailto:info@gispioneers.com">info@gispioneers.com</a></p>
-
+            <p><a href="./searches/Cairo/Al-Maadi/Offices/new-rent/">مكاتب للايجار فى المعادى</a></p>
+            <p><a href="./searches/Cairo/Al-Maadi/Shops/new-rent/">محلات للايجار فى المعادى</a></p>
         </div>
         <div class="col-lg-4">
           <h3 class="pb-3">روابط مفيدة</h3>
@@ -23,12 +23,12 @@
                   </a>
               </p>
               <p>
-                  <a href="./searches/Cairo/Al-Maadi/Apartments/sale/">
+                  <a href="./allsale/Allapartments/Cairo/Al-Maadi/">
                       شقق للبيع في المعادي
                   </a>
               </p>
               <p>
-                  <a href="./searches/Cairo/Mohandeseen/Apartments/sale/">
+                  <a href="./allsale/Allapartments/Cairo/Mohandeseen/">
                       شقق للبيع في المهندسين
                   </a>
               </p>

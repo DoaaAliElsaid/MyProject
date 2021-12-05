@@ -18,15 +18,22 @@ app('App\Http\Controllers\Controllers')->globals();
 
 Route::get('/', 'index@blocks')->name('/');
 
-Route::get('/search/term/{term}' , 'search@term');
+//Route::get('/search/term/{term}' , 'search@term');
+
+Route::get('/error' , 'error@index');
 
 Route::get('/realestate/{id}' , 'realestate@index');
 
 Route::any('/searches/{args?}', 'Searches@index')->where('args', '(.*)');
 
+Route::get('/policy', function () {
+    return view('policy');
+});
+
 Route::get('/about-us', function () {
     return view('about-us');
 });
+
 
 Route::get('/companies/{args?}', 'Companies@index')->where('args', '(.*)');
 

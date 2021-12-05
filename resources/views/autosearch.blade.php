@@ -127,7 +127,7 @@ if (isset($_GET['sbmit']) && $_GET['location']){
         header("Location: ".$URL);
         die();
     }else{
-        header("Location: "."/search/term/".$term);
+        header("Location: "."/error");
         die();
     }
 }

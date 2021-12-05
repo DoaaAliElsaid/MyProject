@@ -9,7 +9,8 @@ class Searches extends BaseController
 {
     function index($args){
         // echo Request::segment(2) ;
-        global $_moh_en,$_hay_en,$_reg_en ,$_type_s_en,$_purp_en;
+        global $_moh_en,$_hay_en,$_reg_en ,$_type_s_en,$_purp_en , $_type_s ,$_purp_l ,
+               $_hay , $_reg , $_moh ;
         $args = explode('/', $args);
         if ( isset($args[0]) ){
             $mohza = $args[0];
@@ -75,9 +76,35 @@ class Searches extends BaseController
                 $config['purp'] = $p;
             }
         }
+
+        if(isset($config['type'])){
+            $t = $config['type'] ;
+            $title = $_type_s[$t];
+        }else{
+            $title = "عقارات";
+        }
+        if(isset($config['purp'])){
+            $p = $config['purp'] ;
+            $title .=' '. $_purp_l[$p];
+        }else{
+            $title .= " للبيع ";
+        }
+        if(isset($config['reg'])){
+            $r = $config['reg'] ;
+            $title .=' فى '. $_reg[$r];
+        }elseif(isset($config['hay'])){
+            $h = $config['hay'] ;
+            $title .=' فى '. $_hay[$h];
+        }elseif(isset($config['moh'])){
+            $m = $config['moh'] ;
+            $title .=' فى '. $_moh[$m];
+        }else{
+            $title .=' فى مصر  ';
+        }
+       // echo $title ;exit();
         //print_r($config);exit();
         $units = (new \App\Searches)->units($config);
-        $count = (new \App\Searches)->count($units);
-        return view('searches', array( "units"=>$units , "count" => $count ));
+        return view('searches')->with(array( "units" => $units ))
+            ->with("title",$title);
     }
 }

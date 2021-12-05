@@ -31,4 +31,5 @@ class Companies extends Model
     function sponser($com){
         return DB::table('sponsors_users')->where('page',$com)->get();
     }
+
 }

@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Request;
 class new_purp extends BaseController
 {
     function index($args){
-        global $_moh_en,$_hay_en,$_reg_en ,$_type_s_en,$_purp_en;
+        global $_moh_en,$_hay_en,$_reg_en ,$_type_s_en,$_purp_en,$_type_s ,$_purp_l ,
+               $_hay , $_reg , $_moh ;;
         $args = explode('/', $args);
         // echo Request::segment(1) ;
         //print_r($args);
@@ -75,10 +76,42 @@ class new_purp extends BaseController
                 $config['reg'] = $r;
             }
         }
+        if(isset($type) && $type == "Allrealestate")
+        {
+            $title = "عقارات";
+        }elseif(isset($config['type'][1])){
+
+            $t = $config['type'][1] ;
+            $title = $_type_s[$t];
+        }
+        else{
+            $title = "عقارات";
+        }
+        if(isset($config['purp'][1])){
+            $p = $config['purp'][1] ;
+            $title .=' '. $_purp_l[$p];
+        }else{
+            $title .= " للبيع ";
+        }
+        if(isset($config['reg'])){
+            $r = $config['reg'] ;
+            $title .=' فى '. $_reg[$r];
+        }elseif(isset($config['hay'])){
+            $h = $config['hay'] ;
+            $title .=' فى '. $_hay[$h];
+        }elseif(isset($config['moh'])){
+            $m = $config['moh'] ;
+            $title .=' فى '. $_moh[$m];
+        }else{
+            $title .=' فى مصر  ';
+        }
+        //echo $config['type'][1];exit();
+        //echo $title;exit();
             //print_r($config);exit();
         //echo 'new purp';exit();
         $units = (new \App\new_purp())->units($config);
        // print_r($units);exit();
-        return view('new_purp')->with( "units" , $units );
+        return view('new_purp')->with( "units" , $units )
+            ->with("title",$title);
     }
 }

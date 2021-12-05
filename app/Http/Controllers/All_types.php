@@ -36,9 +36,22 @@ class All_types extends BaseController
             }
         }
 
+        if(isset($t)){
+            global $_type_s;
+            $title = $_type_s[$t];
+        }else{
+            $title = "عقارات";
+        }
+        if(isset($p)){
+            global $_purp_l;
+            $title .=' '. $_purp_l[$p];
+        }else{
+            $title .= " للبيع ";
+        }
+        //echo $t . $p .$title ;exit();
         $units = (new \App\All_types)->units($t,$p);
         //print_r($units);exit();
-        return view('All_types')->with( "units" , $units );
+        return view('All_types')->with( "units" , $units )->with("title",$title);
     }
     function purp ($purp){
         $purp = 'for-'.$purp;
@@ -53,14 +66,25 @@ class All_types extends BaseController
                 //$t = 0;
                 break;
         }
+        if(! isset($t)){
+            $title = "عقارات";
+        }
+        if(isset($p)){
+            global $_purp_l;
+            $title .=' '. $_purp_l[$p];
+        }else{
+            $title .= " للبيع ";
+        }
+        //echo $t . $p .$title ;exit();
         $units = (new \App\All_types)->purp($p);
         //print_r($units);exit();
-        return view('All_types')->with( "units" , $units );
+        return view('All_types')->with( "units" , $units )->with("title",$title);
     }
     function special ($type){
         $units = (new \App\All_types)->special();
+        $title = "أحدث العقارات";
         //print_r($units);exit();
-        return view('All_types')->with( "units" , $units );
+        return view('All_types')->with( "units" , $units )->with("title",$title);
     }
     function rent ($type){
         $type = $type.'-rent';
@@ -75,8 +99,18 @@ class All_types extends BaseController
                 //$t = 0;
                 break;
         }
+        if(! isset($t)){
+            $title = "عقارات";
+        }
+        if(isset($p)){
+            global $_purp_l;
+            $title .=' '. $_purp_l[$p];
+        }else{
+            $title .= " للبيع ";
+        }
+         //echo $t . $p .$title ;exit();
         $units = (new \App\All_types)->purp($p);
         //print_r($units);exit();
-        return view('All_types')->with( "units" , $units );
+        return view('All_types')->with( "units" , $units )->with("title",$title);
     }
 }

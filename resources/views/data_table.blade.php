@@ -1,9 +1,18 @@
 <?php
-global $_type_s_en , $_purp_l_en ,  $_dir , $_masa3d , $_finish , $_b_age , $_type_s , $_purp_l , $_reg_in  ;
-global $_purp_l_en, $_type_s_en, $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_reg_en,$_moh;
+global $_type_s_en , $_purp_l_en ,  $_dir , $_masa3d , $_finish , $_b_age ,
+   $_type_s , $_purp_l , $_reg_in , $_hay_en, $_hay,$_reg , $_reg_en,$_moh;
 //print_r($units);
+$u = json_encode($units);
+$u = json_Decode($u);
+
 //exit();
+
+   // echo $title ;exit();
 ?>
+<div class="col-md-7">
+    <h5 class="text-end pb-2"> {{$title}} </h5>
+    <p class="text-end">{{$u->total}} عقار </p>
+</div>
 <!-- Akar Good -->
   <div class="cardAkarDetails border-bottom pb-4">
     <div class="container" dir="rtl">
