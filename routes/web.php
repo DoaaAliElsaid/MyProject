@@ -18,6 +18,12 @@ app('App\Http\Controllers\Controllers')->globals();
 
 Route::get('/', 'index@blocks')->name('/');
 
+//Route::get('/',  ['as' => 'home', 'uses' => 'MainController@home']);
+//Route::get('/continent/{name}',  ['as' => 'continent', 'uses' => 'MainController@continent']);
+//Route::get('/country/{name}',  ['as' => 'country', 'uses' => 'MainController@country']);
+//Route::get('/city/{name}',  ['as' => 'city', 'uses' => 'MainController@city']);
+
+
 //Route::get('/search/term/{term}' , 'search@term');
 
 Route::get('/error' , 'error@index');

@@ -42,7 +42,7 @@ body{
     background-size: cover;
 }
 .overlay{
-    background-color: rgba(0,0,0,.4);
+    /*background-color: rgba(0,0,0,.4);*/
 }
 .boxSearch{
     background-color: rgba(0,0,0,.65);

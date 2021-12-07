@@ -105,6 +105,6 @@ class Searches extends BaseController
         //print_r($config);exit();
         $units = (new \App\Searches)->units($config);
         return view('searches')->with(array( "units" => $units ))
-            ->with("title",$title);
+            ->with("title",$title)->with("config",$config);
     }
 }

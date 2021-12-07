@@ -4,10 +4,8 @@ global $_type_s_en , $_purp_l_en ,  $_dir , $_masa3d , $_finish , $_b_age ,
 //print_r($units);
 $u = json_encode($units);
 $u = json_Decode($u);
-
 //exit();
-
-   // echo $title ;exit();
+//echo $title ;exit();
 ?>
 <div class="col-md-7">
     <h5 class="text-end pb-2"> {{$title}} </h5>
