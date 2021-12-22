@@ -38,11 +38,11 @@
     </div>
   </footer>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/swiper-bundle.min.js"></script>
-  <script src="js/file.js"></script>
+  <script src="./public/js/jquery.min.js"></script>
+  <script src="./public/js/popper.min.js"></script>
+  <script src="./public/js/bootstrap.min.js"></script>
+  <script src="./public/js/swiper-bundle.min.js"></script>
+  <script src="./public/js/file.js"></script>
 </body>
 
 </html>

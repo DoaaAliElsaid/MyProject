@@ -14,9 +14,10 @@
 
 // call public or global controller //
 use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\Index;
 app('App\Http\Controllers\Controllers')->globals();
 
-Route::get('/', 'index@blocks')->name('/');
+Route::get('/', 'Index@blocks')->name('/');
 
 //Route::get('/search/term/{term}' , 'search@term');
 
@@ -26,13 +27,9 @@ Route::get('/realestate/{id}' , 'realestate@index');
 
 Route::any('/searches/{args?}', 'Searches@index')->where('args', '(.*)');
 
-Route::get('/policy', function () {
-    return view('policy');
-});
+Route::get('/policy', 'policy@index');
 
-Route::get('/about-us', function () {
-    return view('about-us');
-});
+Route::get('/about-us','about_us@index');
 
 
 Route::get('/companies/{args?}', 'Companies@index')->where('args', '(.*)');

@@ -8,9 +8,10 @@ use Illuminate\Support\Facades\Request;
 class Searches extends BaseController
 {
     function index($args){
+
         // echo Request::segment(2) ;
         global $_moh_en,$_hay_en,$_reg_en ,$_type_s_en,$_purp_en , $_type_s ,$_purp_l ,
-               $_hay , $_reg , $_moh ;
+               $_hay , $_reg , $_moh  ;
         $args = explode('/', $args);
         if ( isset($args[0]) ){
             $mohza = $args[0];
@@ -77,6 +78,8 @@ class Searches extends BaseController
             }
         }
 
+        $data['meta'] = $this->get_title($config);
+
         if(isset($config['type'])){
             $t = $config['type'] ;
             $title = $_type_s[$t];
@@ -101,10 +104,79 @@ class Searches extends BaseController
         }else{
             $title .=' فى مصر  ';
         }
+        //print_r($data['meta']);exit();
        // echo $title ;exit();
         //print_r($config);exit();
         $units = (new \App\Searches)->units($config);
         return view('searches')->with(array( "units" => $units ))
-            ->with("title",$title)->with("config",$config);
+            ->with("title",$title)->with("config",$config)->with("meta", $data['meta']);
+    }
+    function get_title($config)
+    {
+        global $_moh_en,$_hay_en,$_reg_en ,$_type_s_en,$_purp_en , $_type_s ,$_purp_l ,
+               $_hay , $_reg , $_moh ,$_type ;
+        if(isset($config['type'])){
+            $t = $config['type'] ;
+            $titl = $_type_s[$t];
+            $des = $_type[ $t];
+            $key = $_type_s[$t] ." - ".$_type[ $t];
+        }else{
+            $titl = "عقارات";
+            $des = "عقار";
+            $key ="عقار";
+        }
+        if(isset($config['purp'])){
+            $p = $config['purp'] ;
+            $titl .=' '. $_purp_l[$p];
+            $des .= ' '. $_purp_l[$p];
+            $key .=' - '. $_purp_l[$p];
+        }else{
+            $titl .= " للبيع ";
+            $des .= " للبيع ";
+            $key .=" - "." للبيع ";
+        }
+        if(isset($config['reg'])){
+            $h = $config['hay'] ;
+            $m = $config['moh'] ;
+            $r = $config['reg'] ;
+            $titl .=' فى '. $_reg[$r];
+            $des .=' فى '. $_reg[$r];
+            $key .= ' - '. $_reg[$r];
+            $key .= ' - '. $_hay[$h];
+            $key .=' - '. $_moh[$m];
+            $key .=' - '.' ب'.$_reg[$r];
+            $key .=' - '. ' ب'. $_hay[$h];
+            $key .=' - '.' ب'. $_moh[$m];
+        }elseif(isset($config['hay'])){
+            $h = $config['hay'] ;
+            $m = $config['moh'] ;
+            $titl .=' فى '. $_hay[$h];
+            $des .=' فى '. $_hay[$h];
+            $key .= ' - '. $_hay[$h];
+            $key .=' - '. $_moh[$m];
+            $key .=' - '. ' ب'. $_hay[$h];
+            $key .=' - '.' ب'. $_moh[$m];
+        }elseif(isset($config['moh'])){
+            $m = $config['moh'] ;
+            $titl .=' فى '. $_moh[$m];
+            $des .=' فى '. $_moh[$m];
+            $key .=' - '. $_moh[$m];
+            $key .=' - '.' ب'. $_moh[$m];
+        }else{
+            $titl .=' فى مصر  ';
+            $des .=' فى القاهره  ';
+            $key .=" - "."القاهرة";
+        }
+
+        $year = date("Y");
+        $title =$year." | ".$titl." | "."البيوت ";
+        $description = $key." - ".$des.$title;
+        $kewords = $key;
+        $meta['title'] = $title;
+        $meta['desc'] = $description;
+        $meta['keywords'] = $kewords;
+
+        //print_r($meta);exit();
+        return $meta;
     }
 }

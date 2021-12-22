@@ -5,13 +5,21 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="Description" content="only4eve.com " />
+{{--        <meta name="Title" content="{{$meta['title']}}" />--}}
+        <meta name="Description" content="{{$meta['desc']}}"/>
+        <meta name="keywords" content="{{$meta['keywords'] }}"/>
+        <title>{{$meta['title']}}</title>
         <base href="<?=URL::to('/')?>/" />
         <script> var base='<?=URL::to('/')?>/';</script>
-        <meta name="DC.identifier" content="https://only4eve.com/" />
-        <meta property="og:url" content="https://only4eve.com/"/>
-        <meta property="og:site_name" content="only4eve"/>
-        <meta property="og:image" content="https://only4eve.com/img/logo.png"/>
+        <meta name="DC.identifier" content="https://elbyoot.com/" />
+        <meta property="og:title" content="{{$meta['title']}}"/>
+        <meta property="og:description" content="{{ $meta['desc']}}"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://elbyoot.com/"/>
+        <meta property="og:site_name" content="elbyoot"/>
+        <meta property="og:image" content="https://elbyoot.com/images/logo.png"/>
+        <meta property="Author" content="elbyoot"/>
+        <meta property="Publisher" content="elbyoot"/>
         <meta name="robots" content="index, follow"/>
         <meta name="Googlebot" content="index, follow"/>
         <meta name="FAST-WebCrawler" content="index, follow"/>
@@ -27,7 +35,8 @@
         <link rel="stylesheet" href="./css/all.css">
         <link rel="stylesheet" href="./css/swiper-bundle.min.css">
         <link rel="stylesheet" href="./css/style.css">
-        <title>only4eve.com</title>
+
+
 </head>
 
 <body>
@@ -52,7 +61,7 @@
             <a class="nav-link" aria-current="page" href="./companies/3kari"><i class="fa fa-briefcase"></i> للشركات </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://www.shof3qar.com/expressadd/?cache=false"><i class="fa fa-plus-circle ps-1"></i> إضافة عقار</a>
+            <a class="nav-link" href="https://www.shof3qar.com/add-new/choose/"><i class="fa fa-plus-circle ps-1"></i> إضافة عقار</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://www.shof3qar.com/login/">

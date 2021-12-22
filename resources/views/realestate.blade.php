@@ -4,8 +4,9 @@ $row = $real[0];
 //var_dump($row);
 //exit();
 $type=$row->type;
-$imgfolder= "https://www.shoqaq4sale.com/uploads/";
-global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,$_hay,$_reg,$_moh, $_source,$_moh_en,$_hay_en,$_reg_en;
+$imgfolder= "https://www.homz4sale.com/uploads/thumb/";
+global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,$_hay,
+       $_reg,$_moh, $_source,$_moh_en,$_hay_en,$_reg_en ,$imgthumb  , $imglogo;
 
 ?>
   <!-- Section search -->
@@ -13,18 +14,10 @@ global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,
     <div class="container">
       <div class="row" dir="rtl">
         <div class="col-md-8 col-sm-8 text-end">
-          <h2>{{$row->title}}</h2>
-{{--          <div class="details" dir="rtl">--}}
-{{--            <nav class="breadcrumbCreate" aria-label="breadcrumb" dir="ltr">--}}
-{{--              <ol class="breadcrumb justify-content-end">--}}
-{{--                <li class="breadcrumb-item active" aria-current="page">القاهرة</li>--}}
-{{--                <li class="breadcrumb-item"><a href="#"> عقارات بمصر</a></li>--}}
-{{--              </ol>--}}
-{{--            </nav>--}}
-{{--          </div>--}}
+          <h1>{{$row->title}}</h1>
         </div>
         <div class="col-md-4 col-sm-4">
-          <h2 class="text-lg-start textPrice"><img src="images/price.png" alt="price" width="30" height="30"> EGP
+          <h2 class="text-lg-start textPrice"><img src="./public/images/price.png" alt="{{$row->title}}" width="30" height="30"> EGP
               {{$row->price}}</h2>
         </div>
       </div>
@@ -34,26 +27,18 @@ global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,
     <div class="row justify-content-center pb-5">
       <div class="col-lg-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-            </div>
-
-            <div class="carousel-inner newEditSlider">
-                <div class="carousel-item active">
-                    <img src={{$imgfolder.$row->image1name}} class="d-block mx-auto" alt="{{$row->title}}">
+            <div class="carousel-inner">
+                <?php for ($i=1; $i<=8 ; $i++){
+                    $img = "image".$i."name";
+                    $im = $row->$img;
+                    $add_img [] = app('App\Http\Controllers\Controllers')->getImage($im);
+                }
+                $add_img = array_unique($add_img);
+                for($i = 0; $i < count($add_img); $i++){ ?>
+                <div  data-slide-to="{{$i}}" class="carousel-item heightDev <?php if($i == 0){echo "active";} ?>">
+                    <img src="{{$add_img[$i] }}" alt="{{$row->title}}" class="img-fluid mx-auto d-block">
                 </div>
-                <div class="carousel-item">
-                    <img src={{$imgfolder.$row->image2name}} class="d-block mx-auto" alt="{{$row->title}}">
-                </div>
-                <div class="carousel-item">
-                    <img src={{$imgfolder.$row->image3name}} class="d-block mx-auto" alt="{{$row->title}}">
-                </div>
+                <?php }?>
             </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
@@ -109,10 +94,10 @@ global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,
           <div class="row">
             <div class="col-lg-12">
               <div class="descrBlockProp noTop">
-                <h4 class="py-3"> تفاصيل الاعلان</h4>
+                <h4 class="py-3"> التفاصيل :</h4>
               </div>
               <p>
-                  {{$row->details}}
+                  {{strip_tags($row->details)}}
               </p>
 
               <ul class="list-group border-0 pe-0">

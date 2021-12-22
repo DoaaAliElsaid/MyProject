@@ -1,6 +1,6 @@
 <?php
 global $_type_s_en , $_purp_l_en ,  $_dir , $_masa3d , $_finish , $_b_age  , $_reg_in  ;
-global   $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_reg_en,$_moh;
+global   $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_reg_en,$_moh ,$imgthumb  , $imglogo;
 
 ?>
 <!-- Akar Good -->
@@ -10,8 +10,13 @@ global   $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_reg_en,$_moh;
 
           @if(!empty($units))
               @foreach($units as $row)
-
                   <?php
+                  $img = $imgthumb . $row->image1name;
+                  if(@getimagesize($img)&& ! empty($img)){
+                      $img = $img;
+                  }else{
+                      $img = $imglogo;
+                  }
                   $typ = $row->type;
 
                   if(isset($row->region_code))
@@ -31,8 +36,8 @@ global   $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_reg_en,$_moh;
                   ?>
          <div class="col-lg-4 col-md-6">
           <div class="card mb-3">
-              <a href="./realestate/{{$row->unit_id}}" class="heightDev">
-                  <img src="https://www.shoqaq4sale.com/uploads/{{$row->image1name}}" class="img-fluid mx-auto d-block" alt="{{$row->title}}">
+              <a href="./realestate/{{$row->unit_id}}" class="heightDev" style="position: relative;">
+                  <img src="{{$img}}" class="img-fluid mx-auto d-block" alt="{{$row->title}}">
               </a>
             <div class="card-body pb-0">
               <a href="./realestate/{{$row->unit_id}}" class="text-decoration-none linkCard">
@@ -40,10 +45,10 @@ global   $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_reg_en,$_moh;
                         {{$row->title}}
                   </p>
                 <span class="textPrice fw-bold">   جنيه {{$row->price}}</span>
-                <span class="badge bg-secondary float-start">only4eve</span>
+                <span class="badge bg-secondary float-start">elbyoot</span>
                   <p class="card-text pt-2"> <i class="fa fa-map-marker"></i>  {{$_reg[$r1]}},{{$_hay[$h1]}},{{$_moh[$m1]}}  </p>
                   <p><i class="fa fa-home"></i> {{$_type_s[$typ]}} </p>
-                  <img src="images/logo.png" class="imgComapny" alt="comapny">
+                  <img src="./public/images/logo.png" class="imgComapny" alt="comapny">
                 <p class="text-center">
                   <span> <i class="fa fa-bed"></i> {{$row->roomnum}}</span>
                   <span class="px-3"><i class="fa fa-toilet"></i> {{$row->bathnum}}</span>

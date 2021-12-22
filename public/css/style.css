@@ -77,7 +77,7 @@ body{
 .heightDev{
     height: 200px; /* Can be anything */
     width: 100%; /* Can be anything */
-    position: relative;
+    /*position: relative;*/
 }
 .newHeightDev{
     height: 480px; /* Can be anything */
