@@ -3,7 +3,7 @@
     <div class="overlay">
         <div class="container-fluid p-0">
             <div class="text-white pt-4 aboutUs boxSearch">
-                <h2 class="text-center fw-bold pt-5 pb-3">سياسة الخصوصية</h2>
+                <h1 class="text-center fw-bold pt-5 pb-3">سياسة الخصوصية</h1>
             </div>
         </div>
     </div>

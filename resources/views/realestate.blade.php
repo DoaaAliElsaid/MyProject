@@ -61,7 +61,7 @@ global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,
             <div class="col-lg-3 col-6">
               <div class="card bgCard mb-2">
                 <div class="card-body py-2 text-center">
-                  <h5><i class="fa fa-bed"></i></h5>
+                  <i class="fa fa-bed"></i>
                   <h6 class="mb-0">{{$row->roomnum}} غرف</h6>
                 </div>
               </div>
@@ -69,7 +69,7 @@ global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,
             <div class="col-lg-3 col-6">
               <div class="card bgCard mb-2">
                 <div class="card-body py-2 text-center">
-                  <h5><i class="fa fa-toilet"></i></h5>
+                  <i class="fa fa-toilet"></i>
                   <h6 class="mb-0">{{$row->bathnum}} حمامات</h6>
                 </div>
               </div>
@@ -77,7 +77,7 @@ global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,
             <div class="col-lg-3 col-6">
               <div class="card bgCard mb-2">
                 <div class="card-body py-2 text-center">
-                  <h5><i class="fa fa-chart-area"></i></h5>
+                  <i class="fa fa-chart-area"></i>
                   <h6 class="mb-0">{{$row->area}} متر <sup>2</sup></h6>
                 </div>
               </div>
@@ -85,8 +85,8 @@ global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,
             <div class="col-lg-3 col-6">
               <div class="card bgCard mb-2">
                 <div class="card-body py-2 text-center">
-                  <h5><i class="fa fa-tag"></i></h5>
-                  <h6 class="mb-0">{{$row->price}} السعر / م <sup>2</sup></h6>
+                    <i class="fa fa-tag"></i>
+                    <h6 class="mb-0">{{$row->price}} السعر / م <sup>2</sup></h6>
                 </div>
               </div>
             </div>

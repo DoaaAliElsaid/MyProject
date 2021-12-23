@@ -1,6 +1,6 @@
 <?php
-global $_type_s_en , $_purp_l_en ,  $_dir , $_masa3d , $_finish , $_b_age ,
-       $_type_s , $_purp_l , $_reg_in , $_hay_en, $_hay,$_reg , $_reg_en,$_moh,
+global $_type_s_en , $_purp_l_en ,
+       $_type_s , $_purp_l , $_reg_in , $_hay,$_reg ,$_moh,
        $_type , $_hay_b , $_hay_in  ,$imgthumb  , $imglogo;
 $u = json_encode($units);
 $u = json_Decode($u);
@@ -26,15 +26,15 @@ $u = json_Decode($u);
                   <div class="card cardDetails mb-2" dir="rtl">
                       <div class="row g-0">
                           <div class="col-md-4">
-                              <div id="carouselExa" class="carousel slide" data-bs-ride="carousel">
-                                  <div class="carousel-inner">
+{{--                              <div id="carouselExa" class="carousel slide" data-bs-ride="carousel">--}}
+{{--                                  <div class="carousel-inner">--}}
                                       <div class="carousel-item heightDev active">
                                           <a href="./realestate/{{$row->unit_id}}" class="heightDev">
                                               <img src="{{$img}}" class="img-fluid mx-auto d-block" alt="{{$row->title}}">
                                           </a>
                                       </div>
-                                  </div>
-                              </div>
+{{--                                  </div>--}}
+{{--                              </div>--}}
                           </div>
                             <?php
                                 $typ = $row->type;

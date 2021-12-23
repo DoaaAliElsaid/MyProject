@@ -1,5 +1,5 @@
 Host: https://www.elbyoot.com/
-# Sitemap: https://www.elbyoot.com/sitemap.xml
+Sitemap: https://www.elbyoot.com/sitemap.xml
 
 # Block crawling software
 User-agent: sitecheck.internetseer.com

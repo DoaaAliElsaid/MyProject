@@ -77,7 +77,9 @@ class Searches extends BaseController
                 $config['purp'] = $p;
             }
         }
-
+        if(empty($config['purp'])){
+            $config['purp']="1";
+        }
         $data['meta'] = $this->get_title($config);
 
         if(isset($config['type'])){

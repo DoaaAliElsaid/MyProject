@@ -4,7 +4,7 @@
     <div class="pt-3">
       <div class="container">
         <div>
-          <h1 class="text-center pb-4 fw-bold">عقارات للبيع و للايجار</h1>
+          <h1 class="text-center fw-bold">عقارات للبيع و للايجار</h1>
        </div>
       </div>
     </div>

@@ -8,7 +8,7 @@
         <a href="/">عقارات مصر</a>
         <?php if (isset($config['type'])){ ?>
             >
-            <a href="./searches/.<?=$_type_en[$config['type']]."/".$_purp_en[$config['purp']] ?>">{{ $_type_s[$config['type']]}}</a>
+            <a href="./searches/<?=$_type_en[$config['type']]."/".$_purp_en[$config['purp']] ?>">{{ $_type_s[$config['type']]}}</a>
         <?php }if(isset($config['moh'])){
             if(empty($config['type']))
             {
@@ -20,15 +20,15 @@
             }
             $moh=$_type_s[$config['type']]." ".$_purp_l[$config['purp']]." ".$_moh_in[$config['moh']];
         ?> >
-            <a href="./searches/.<?=$_moh_en[$config['moh']]."/".$_type_en[$config['type']]."/".$_purp_en[$config['purp']] ?>">{{$moh}}</a>
+            <a href="./searches/<?=$_moh_en[$config['moh']]."/".$_type_en[$config['type']]."/".$_purp_en[$config['purp']] ?>">{{$moh}}</a>
         <?php }if(isset($config['hay'])){
             $hay=$_type_s[$config['type']]." ".$_purp_l[$config['purp']]." ".$_hay_in[$config['hay']] ;
         ?> >
-            <a href="./searches/.<?=$_moh_en[$config['moh']]."/".$_hay_en[$config['hay']]."/".$_type_en[$config['type']]."/".$_purp_en[$config['purp']] ?>">{{$hay}}</a>
+            <a href="./searches/<?=$_moh_en[$config['moh']]."/".$_hay_en[$config['hay']]."/".$_type_en[$config['type']]."/".$_purp_en[$config['purp']] ?>">{{$hay}}</a>
         <?php }if(isset($config['reg'])){
             $reg=$_type_s[$config['type']]." ".$_purp_l[$config['purp']].$_reg_in[$config['reg']] ;
         ?> >
-            <a href="./searches/.<?=$_moh_en[$config['moh']]."/".$_hay_en[$config['hay']]."/".$_reg_en[$config['reg']]."/".$_type_en[$config['type']]."/".$_purp_en[$config['purp']] ?>">{{$reg}}</a>
+            <a href="./searches/<?=$_moh_en[$config['moh']]."/".$_hay_en[$config['hay']]."/".$_reg_en[$config['reg']]."/".$_type_en[$config['type']]."/".$_purp_en[$config['purp']] ?>">{{$reg}}</a>
         <?php } ?>
     <br>
             @include('data_table')

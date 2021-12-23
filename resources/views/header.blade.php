@@ -17,9 +17,10 @@
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://elbyoot.com/"/>
         <meta property="og:site_name" content="elbyoot"/>
-        <meta property="og:image" content="https://elbyoot.com/images/logo.png"/>
-        <meta property="Author" content="elbyoot"/>
-        <meta property="Publisher" content="elbyoot"/>
+        <meta property="og:image" content="./images/logo.png"/>
+        <meta name="author" content="البيوت" />
+        <meta name="Publisher" content="البيوت" />
+        <link href=".<?php echo $_SERVER['REQUEST_URI'] ?>" rel="canonical" />
         <meta name="robots" content="index, follow"/>
         <meta name="Googlebot" content="index, follow"/>
         <meta name="FAST-WebCrawler" content="index, follow"/>
@@ -29,7 +30,9 @@
         <meta name="msnbot" content="INDEX, FOLLOW"/>
         <meta name="YahooSeeker" content="INDEX, FOLLOW"/>
         <meta name="rating" content="general" />
-        <meta name="rating" content="general" />
+        <meta name="copyright" content=" البيوت أكبر سوق للعقارات فى مصر" />
+        <meta name="Classification" content=" البيوت أكبر سوق للعقارات فى مصر" />
+        <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="./images/favicon.ico">
         <link rel="stylesheet" href="./css/bootstrap.min.css">
         <link rel="stylesheet" href="./css/all.css">
