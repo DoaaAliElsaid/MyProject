@@ -9,14 +9,15 @@ class Companies extends BaseController
     function index($company)
     {
         $company = explode('/', $company);
-        $units = (new \App\Companies)->company($company[0]);
-
-        $sponser = (new \App\Companies)->sponser($company[0]);
+        $units = (new \App\CompaniesModel)->company($company[0]);
+        $u = json_encode($units);
+        $u = json_Decode($u);
+        $sponser = (new \App\CompaniesModel)->sponser($company[0]);
         $data['meta'] = $this->get_title($sponser);
        // print_r($sponser);
 //        exit();
         return view('companies',array("sponser" => $sponser , "units"=>$units))
-            ->with("meta",$data['meta']);
+            ->with("meta",$data['meta'])->with("u", $u);
     }
     function get_title($sponser)
     {

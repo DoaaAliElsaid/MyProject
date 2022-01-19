@@ -4,7 +4,7 @@
       <div class="row border-bottom">
         <div class="col-lg-4">
           <h3 class="pb-3">اتصل بنا</h3>
-            <p><a href="mailto:info@gispioneers.com">info@gispioneers.com</a></p>
+{{--            <p><a href="mailto:info@gispioneers.com">info@gispioneers.com</a></p>--}}
             <p><a href="./searches/Cairo/Al-Maadi/Offices/new-rent/">مكاتب للايجار فى المعادى</a></p>
             <p><a href="./searches/Cairo/Al-Maadi/Shops/new-rent/">محلات للايجار فى المعادى</a></p>
         </div>
@@ -38,11 +38,15 @@
     </div>
   </footer>
 
-  <script src="./public/js/jquery.min.js"></script>
-  <script src="./public/js/popper.min.js"></script>
-  <script src="./public/js/bootstrap.min.js"></script>
-  <script src="./public/js/swiper-bundle.min.js"></script>
-  <script src="./public/js/file.js"></script>
+ <link async href="./public/css/swiper-bundle.min.css">
+
+ <script type="text/javascript" async="" src="./public/js/popper.min.js"></script>
+ <script type="text/javascript" async="" src="./public/js/bootstrap.min.js"></script>
+ <script type="text/javascript" async="" src="./public/js/file.js"></script>
+
+ <script type="text/javascript" async="" src="./public/js/swiper-bundle.min.js"></script>
+ <script type="text/javascript" async="" src="./public/js/lazysizes.min.js"></script>
+ <link async href="./public/css/all.css">
 </body>
 
 </html>

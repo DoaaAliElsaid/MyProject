@@ -9,7 +9,7 @@
         <meta name="Description" content="{{$meta['desc']}}"/>
         <meta name="keywords" content="{{$meta['keywords'] }}"/>
         <title>{{$meta['title']}}</title>
-        <base href="<?=URL::to('/')?>/" />
+{{--        <base href="<?=URL::to('/')?>/" />--}}
         <script> var base='<?=URL::to('/')?>/';</script>
         <meta name="DC.identifier" content="https://elbyoot.com/" />
         <meta property="og:title" content="{{$meta['title']}}"/>

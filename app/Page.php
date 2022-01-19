@@ -9,7 +9,7 @@ class Page extends Model
 {
     function units()
     {
-        return DB::table('units')->orderBy('date','desc')->limit(3)->get();
+        return DB::table('sp_unit')->orderBy('sp_date','desc')->limit(3)->get();
         //print_r($value);
     }
 }

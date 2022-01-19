@@ -6,7 +6,7 @@ use Carbon\Traits\Units;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class new_purp extends Model
+class new_purpModel extends Model
 {
     function units($config)
     {

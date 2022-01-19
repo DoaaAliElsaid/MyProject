@@ -6,7 +6,7 @@ use Carbon\Traits\Units;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Searches extends Model
+class SearchesModel extends Model
 {
     function units($config)
     {
@@ -59,16 +59,17 @@ class Searches extends Model
 //        print_r($query);
 //        exit();
 
-        $val =  DB::table('units')->where(function($q) use ($query)
+        $val =  DB::table('units')->select('units.roomnum','units.bathnum','mohafzacode', 'ahyaacode', 'region_code','units.date', 'units.unit_id', 'purp', 'type', 'details', 'units.title', 'area','price', 'image1name','units.mobile','units.video_img')->where(function($q) use ($query)
                 {
                     foreach($query as $key => $value)
                     {
 
                         $q->where($key, '=', $value);
                     }
-                })->paginate(10);
-//        print_r($val);
-//        exit();
+                })->limit(10)->get();
+       // $val = $val->paginate(10);
+       // print_r($val);
+        //exit();
         if(isset($_GET['q_searches'])){
             $query = DB::getQueryLog();
             $query = end($query);

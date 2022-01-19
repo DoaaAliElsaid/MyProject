@@ -50,10 +50,16 @@ class All_types extends BaseController
         }
         $data['meta'] = $this->get_title($t,$p);
         //echo $t . $p .$title ;exit();
-        $units = (new \App\All_types)->units($t,$p);
+        $units = (new \App\All_typesModel)->units($t,$p);
+        $u = json_encode($units);
+        $u = json_Decode($u);
+        if(isset($u)){
+            $title .=" - ".$u->total ." ";
+        }
+        $title .=" | "."البيوت - elbyoot.com ";
         //print_r($units);exit();
         return view('all_types')->with( "units" , $units )->with("title",$title)
-            ->with("meta",$data['meta']);
+            ->with("meta",$data['meta']) ->with("u", $u);
     }
     function purp ($purp){
         $purp = 'for-'.$purp;
@@ -79,22 +85,37 @@ class All_types extends BaseController
             $title .= " للبيع ";
         }
         //echo $t . $p .$title ;exit();
-        $units = (new \App\All_types)->purp($p);
+        $units = (new \App\All_typesModel)->purp($p);
+        $u = json_encode($units);
+        $u = json_Decode($u);
+        if(isset($u)){
+            $title .=" - ".$u->total ." ";
+        }
+        $title .=" | "."البيوت - elbyoot.com ";
         //print_r($units);exit();
-        return view('all_types')->with( "units" , $units )->with("title",$title) ->with("meta",$data['meta']);
+        return view('all_types')->with( "units" , $units )
+            ->with("title",$title) ->with("meta",$data['meta'])
+            ->with("u", $u);
     }
     function special ($type){
-        $units = (new \App\All_types)->special();
+        $units = (new \App\All_typesModel)->special();
+        $u = json_encode($units);
+        $u = json_Decode($u);
+
         $title = "أحدث العقارات";
-        $titl = $title." للبيع و للايحار "." |"."البيوت";
-        $description=$title." "." للبيع "." - ".$title." "."للايحار القديم"." - ".$title." "."للايجار الجديد"." - ".$title." للايجار المفروش "." - ".$title." "."للبيع بالتقسيط"." |"."البيوت";;
+        if(isset($u)){
+            $title .=" - ".$u->total ." ";
+        }
+        $title .=" | "."البيوت - elbyoot.com ";
+        $titl = "أحدث العقارات "." للبيع و للايحار "." |"."البيوت";
+        $description="أحدث العقارات "." "." للبيع "." - "."أحدث العقارات "." "."للايحار القديم"." - "."أحدث العقارات "." "."للايجار الجديد"." - "."أحدث العقارات "." للايجار المفروش "." - "."أحدث العقارات "." "."للبيع بالتقسيط"." |"."البيوت";;
         $keywords="عقارات - بيع - ايجار قديم - ايجار جديد - تمليك - مفروش - تقسيط ";
         $meta['title'] = $titl;
         $meta['desc'] = $description;
         $meta['keywords'] = $keywords;
         //print_r($units);exit();
         return view('all_types')->with( "units" , $units )->with("title",$title)
-            ->with("meta",$meta);
+            ->with("meta",$meta) ->with("u", $u);
     }
     function rent ($purp){
         $purp = $purp.'-rent';
@@ -120,10 +141,17 @@ class All_types extends BaseController
         }
         $data['meta'] = $this->get_title($t='',$p);
          //echo $t . $p .$title ;exit();
-        $units = (new \App\All_types)->purp($p);
+        $units = (new \App\All_typesModel)->purp($p);
+        $u = json_encode($units);
+        $u = json_Decode($u);
+        if(isset($u)){
+            $title .=" - ".$u->total ." ";
+        }
+        $title .=" | "."البيوت - elbyoot.com ";
         //print_r($units);exit();
-        return view('all_types')->with( "units" , $units )->with("title",$title)
-            ->with("meta",$data['meta']);;
+        return view('all_types')->with( "units" , $units )
+            ->with("title",$title)->with("meta",$data['meta'])
+            ->with("u", $u);
     }
 
     function get_title($t,$p)

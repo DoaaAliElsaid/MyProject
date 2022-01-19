@@ -16,7 +16,7 @@ class Controllers extends BaseController
         $site_name_en = "elbyoot";
         $site_name_ar = "البيوت";
         $imgthumb = "https://www.homz4sale.com/uploads/thumb/";
-        $imglogo = "./images/logo.png";
+        $imglogo = "./public/images/logo.png";
        // echo 'hi';
         $result = (new \App\Models)->globals();
        // print_r($result['moh']);exit();

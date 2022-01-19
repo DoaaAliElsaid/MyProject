@@ -2,12 +2,12 @@
 global $_type_s_en , $_purp_l_en ,
        $_type_s , $_purp_l , $_reg_in , $_hay,$_reg ,$_moh,
        $_type , $_hay_b , $_hay_in  ,$imgthumb  , $imglogo;
-$u = json_encode($units);
-$u = json_Decode($u);
+//$u = json_encode($units);
+//$u = json_Decode($u);
 ?>
 <div class="col-md-7">
     <h1 class="text-end pb-2"> {{$title}} </h1>
-    <p class="text-end">{{$u->total}} عقار </p>
+{{--    <p class="text-end">{{$u->total}} عقار </p>--}}
 </div>
 <!-- Akar Good -->
   <div class="cardAkarDetails border-bottom pb-4">
@@ -67,7 +67,7 @@ $u = json_Decode($u);
                               <div class="card-body contentCard">
                                   <a href="./realestate/{{$row->unit_id}}" class="text-decoration-none linkCard">
                                       <h2 title="{{$row->title}}" class="card-text fw-bold" style="height: 25px;color: black;">
-                                          {{strip_tags(substr($row->title,0, strpos($row->title, ' ', 50)))}}
+                                          {{strip_tags(substr($row->title,0,50))}}
                                       </h2>
                                       @if((new \Jenssegers\Agent\Agent())->isMobile())
                                           <br>
@@ -125,7 +125,7 @@ $u = json_Decode($u);
           @endif
           <div class="d-flex">
               <div class="mx-auto">
-                  {{$units->links()}}
+{{--                  {{$units->onEachSide(1)->links()}}--}}
               </div>
           </div>
       </div>

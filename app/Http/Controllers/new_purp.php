@@ -79,22 +79,12 @@ class new_purp extends BaseController
 
         $data['meta'] = $this->get_title($config);
 
-        if(isset($type) && $type == "Allrealestate")
-        {
-            $title = "عقارات";
-        }elseif(isset($config['type'][1])){
 
-            $t = $config['type'][1] ;
-            $title = $_type_s[$t];
-        }
-        else{
-            $title = "عقارات";
-        }
         if(isset($config['purp'][1])){
             $p = $config['purp'][1] ;
-            $title .=' '. $_purp_l[$p];
+            $title =' '. $_purp_l[$p];
         }else{
-            $title .= " للبيع ";
+            $title = " للبيع ";
         }
         if(isset($config['reg'])){
             $r = $config['reg'] ;
@@ -112,10 +102,28 @@ class new_purp extends BaseController
         //echo $title;exit();
             //print_r($config);exit();
         //echo 'new purp';exit();
-        $units = (new \App\new_purp())->units($config);
+        $units = (new \App\new_purpModel())->units($config);
+        $u = json_encode($units);
+        $u = json_Decode($u);
+        if(isset($u)){
+            $title .=" - ".$u->total ." ";
+        }
+        if(isset($type) && $type == "Allrealestate")
+        {
+            $title = "عقارات";
+        }elseif(isset($config['type'][1])){
+
+            $t = $config['type'][1] ;
+            $title .= $_type_s[$t];
+        }
+        else{
+            $title .= "عقارات";
+        }
+        $title .=" | "."البيوت - elbyoot.com ";
        // print_r($units);exit();
         return view('new_purp')->with( "units" , $units )
-            ->with("title",$title)->with("meta", $data['meta']);
+            ->with("title",$title)->with("meta", $data['meta'])
+            ->with("u", $u);
     }
     function get_title($config)
     {

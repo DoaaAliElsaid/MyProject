@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Routing\Controller as BaseController;
-use App\Page;
 use Illuminate\Support\Facades\Request;
 
 class Searches extends BaseController
@@ -80,39 +79,17 @@ class Searches extends BaseController
         if(empty($config['purp'])){
             $config['purp']="1";
         }
-        $data['meta'] = $this->get_title($config);
-
-        if(isset($config['type'])){
-            $t = $config['type'] ;
-            $title = $_type_s[$t];
-        }else{
-            $title = "عقارات";
-        }
-        if(isset($config['purp'])){
-            $p = $config['purp'] ;
-            $title .=' '. $_purp_l[$p];
-        }else{
-            $title .= " للبيع ";
-        }
-        if(isset($config['reg'])){
-            $r = $config['reg'] ;
-            $title .=' فى '. $_reg[$r];
-        }elseif(isset($config['hay'])){
-            $h = $config['hay'] ;
-            $title .=' فى '. $_hay[$h];
-        }elseif(isset($config['moh'])){
-            $m = $config['moh'] ;
-            $title .=' فى '. $_moh[$m];
-        }else{
-            $title .=' فى مصر  ';
-        }
         //print_r($data['meta']);exit();
        // echo $title ;exit();
         //print_r($config);exit();
-        $units = (new \App\Searches)->units($config);
+        $units = (new \App\SearchesModel)->units($config);
+
+        $data['meta'] = $this->get_title($config);
         return view('searches')->with(array( "units" => $units ))
-            ->with("title",$title)->with("config",$config)->with("meta", $data['meta']);
+           ->with("config",$config)
+            ->with("meta", $data['meta']);
     }
+
     function get_title($config)
     {
         global $_moh_en,$_hay_en,$_reg_en ,$_type_s_en,$_purp_en , $_type_s ,$_purp_l ,

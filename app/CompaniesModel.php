@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Companies extends Model
+class CompaniesModel extends Model
 {
     function company($com)
     {

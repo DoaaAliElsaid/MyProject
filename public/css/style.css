@@ -2,10 +2,10 @@
 
 @font-face{
     src: url(../webfonts/Cairo-Regular.ttf);
-    font-family: cairo
+    font-family: cairo; font-display: swap;
 }
 body{
-    font-family: Cairo;
+    font-family: Cairo;font-display: swap;
 }
 /* ============== Header ===================== */
 .navbar,.collpaseSearch{

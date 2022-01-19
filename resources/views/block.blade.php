@@ -32,12 +32,12 @@ global   $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_reg_en,$_moh ,$imgthumb  
                   if(isset($row->mohafzacode))
                   {
                       $m1= $row->mohafzacode;
-                  }//echo $m1;exit();
+                  }//echo "r1 ".$r1." h1 ".$h1." m1 ".$m1;exit();
                   ?>
          <div class="col-lg-4 col-md-6">
           <div class="card mb-3">
               <a href="./realestate/{{$row->unit_id}}" class="heightDev" style="position: relative;">
-                  <img src="{{$img}}" class="img-fluid mx-auto d-block" alt="{{$row->title}}">
+                  <img src="{{$img}}" class="img-fluid" alt="{{$row->title}}">
               </a>
             <div class="card-body pb-0">
               <a href="./realestate/{{$row->unit_id}}" class="text-decoration-none linkCard">
@@ -46,7 +46,7 @@ global   $_hay_en, $_type_s, $_purp_l, $_hay,$_reg , $_reg_en,$_moh ,$imgthumb  
                   </p>
                 <span class="textPrice fw-bold">   جنيه {{$row->price}}</span>
                 <span class="badge bg-secondary float-start">elbyoot</span>
-                  <p class="card-text pt-2"> <i class="fa fa-map-marker"></i>  {{$_reg[$r1]}},{{$_hay[$h1]}},{{$_moh[$m1]}}  </p>
+                  <p class="card-text pt-2"> <i class="fa fa-map-marker"></i>   @if($r1 != 0){{$_reg[$r1]}}@endif,{{$_hay[$h1]}},{{$_moh[$m1]}}  </p>
                   <p><i class="fa fa-home"></i> {{$_type_s[$typ]}} </p>
                   <img src="./public/images/logo.png" class="imgComapny" alt="comapny">
                 <p class="text-center">

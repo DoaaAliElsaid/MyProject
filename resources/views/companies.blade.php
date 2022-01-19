@@ -6,7 +6,9 @@ if((new \Jenssegers\Agent\Agent())->isMobile()){
 }else{
     $s='';
 }
-$title = $sponsors->title;
+
+$title = $sponsors->title ." ".$u->total;
+$title .=" | "."البيوت - elbyoot.com ";
 //echo $title;
 //exit();
 //var_dump($sponsors->img);

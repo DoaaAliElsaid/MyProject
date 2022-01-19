@@ -8,14 +8,24 @@ class realestate extends BaseController
 {
     function index($id)
     {
+        //echo "id : ".$id;
         // Read value from Model method
         $real = (new \App\Realestate)->real($id);
-        $units = (new \App\Realestate)->units($real[0]->type);
-        $data['meta'] = $this->get_title($real);
-        //print_r($real);exit();
-        // Pass to view
-        return view('realestate',array("real" => $real , "units"=>$units))
-            ->with("meta",$data['meta']);
+       // print_r($real);exit();
+
+        if(isset($real[0])){
+            $units = (new \App\Realestate)->units($real[0]->type);
+            $data['meta'] = $this->get_title($real);
+            // Pass to view
+            return view('realestate',array("real" => $real , "units"=>$units))
+                ->with("meta",$data['meta']);
+        }else{
+          //  echo 'juujk';exit();
+            // Pass to view
+
+            return redirect('/');
+        }
+
     }
     function get_title($real)
     {
@@ -40,8 +50,8 @@ class realestate extends BaseController
         }
         $year = date("Y");
         $title = $row->title;
-        $description = strip_tags(substr( $row->details,0, strpos( $row->details, ' ', 240)));
         $kewords = $_type_s[$t]." - ".$_type[$t]." - ".$_purp_l[$p]." - ".$loc." البيوت";
+        $description = $title . " ".$kewords;
         $meta['title'] = $title;
         $meta['desc'] = $description;
         $meta['keywords'] = $kewords;

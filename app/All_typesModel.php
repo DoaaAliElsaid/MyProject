@@ -6,7 +6,7 @@ use Carbon\Traits\Units;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class All_types extends Model
+class All_typesModel extends Model
 {
     function units($type,$purp)
     {

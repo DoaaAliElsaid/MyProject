@@ -1,13 +1,12 @@
 @include('header')
 <?php
+global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,$_hay,
+       $_reg,$_moh, $_source,$_moh_en,$_hay_en,$_reg_en ,$imgthumb  , $imglogo;
 $row = $real[0];
 //var_dump($row);
 //exit();
 $type=$row->type;
 $imgfolder= "https://www.homz4sale.com/uploads/thumb/";
-global $_dir, $_masa3d, $_finish, $_b_age, $_type_s, $_type, $_purp_l, $_reg_in,$_hay,
-       $_reg,$_moh, $_source,$_moh_en,$_hay_en,$_reg_en ,$imgthumb  , $imglogo;
-
 ?>
   <!-- Section search -->
   <div class="details pt-4">
